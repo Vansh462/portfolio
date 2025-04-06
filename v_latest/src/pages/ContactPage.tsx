@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import portfolioData from '@/data/portfolio';
 
@@ -43,7 +43,7 @@ export default function ContactPage() {
 
   return (
     <div>
-      <section className="py-20">
+      <section id="contact-section" className="py-20">
         <div className="container mx-auto px-4">
           <SectionHeading
             title="Contact Me"
@@ -116,22 +116,54 @@ export default function ContactPage() {
                   Connect With Me
                 </h3>
                 <div className="flex space-x-4">
-                  {personal.contact.socials.map((social) => (
-                    <a
-                      key={social.platform}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-gray-100 dark:bg-gray-800 p-3 rounded-full hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-colors"
-                      aria-label={social.platform}
-                    >
-                      <span className="sr-only">{social.platform}</span>
-                      {/* We would use the actual icons here */}
-                      <div className="h-6 w-6 text-primary-600 dark:text-primary-400">
-                        {social.platform.charAt(0)}
-                      </div>
-                    </a>
-                  ))}
+                  {personal.contact.socials.map((social) => {
+                    // Map social platform to icon component
+                    let SocialIcon;
+                    switch (social.platform.toLowerCase()) {
+                      case 'github':
+                        SocialIcon = Github;
+                        break;
+                      case 'linkedin':
+                        SocialIcon = Linkedin;
+                        break;
+                      case 'twitter':
+                        SocialIcon = Twitter;
+                        break;
+                      case 'facebook':
+                        SocialIcon = Facebook;
+                        break;
+                      case 'instagram':
+                        SocialIcon = Instagram;
+                        break;
+                      default:
+                        SocialIcon = null;
+                    }
+
+                    return (
+                      <a
+                        key={social.platform}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-gray-100 dark:bg-gray-800 p-3 rounded-full hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-colors group relative"
+                        aria-label={social.platform}
+                      >
+                        <span className="sr-only">{social.platform}</span>
+                        {SocialIcon ? (
+                          <SocialIcon className="h-6 w-6 text-primary-600 dark:text-primary-400" />
+                        ) : (
+                          <div className="h-6 w-6 text-primary-600 dark:text-primary-400 flex items-center justify-center">
+                            {social.platform.charAt(0)}
+                          </div>
+                        )}
+
+                        {/* Tooltip */}
+                        <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 text-xs font-medium text-white bg-gray-900 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                          {social.platform}
+                        </span>
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </motion.div>
@@ -159,7 +191,7 @@ export default function ContactPage() {
                   </div>
                 ) : null}
 
-                <form onSubmit={handleSubmit}>
+                <form id="contact-form" onSubmit={handleSubmit}>
                   <div className="space-y-6">
                     <div>
                       <label

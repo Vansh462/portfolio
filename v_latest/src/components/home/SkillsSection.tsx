@@ -166,10 +166,10 @@ export default function SkillsSection() {
         className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6"
       >
         {[
-          { label: 'Years Experience', value: '3+', icon: <Layers className="h-6 w-6" /> },
+          { label: 'Years Experience', value: '2+', icon: <Layers className="h-6 w-6" /> },
           { label: 'Projects Completed', value: '10+', icon: <Rocket className="h-6 w-6" /> },
-          { label: 'Technologies', value: '15+', icon: <Cpu className="h-6 w-6" /> },
-          { label: 'Satisfied Clients', value: '5+', icon: <LineChart className="h-6 w-6" /> },
+          { label: 'Technologies', value: '20+', icon: <Cpu className="h-6 w-6" /> },
+          { label: 'Leadership Roles', value: '2+', icon: <LineChart className="h-6 w-6" /> },
         ].map((stat, index) => (
           <motion.div
             key={stat.label}
@@ -203,9 +203,9 @@ export default function SkillsSection() {
         viewport={{ once: true }}
         className="mt-20 text-center"
       >
-        <h3 className="text-xl font-bold text-dark-400 dark:text-light-100 mb-8">Technologies I Work With</h3>
+        <h3 className="text-xl font-bold text-dark-400 dark:text-light-100 mb-8">Technical Skills & Tools</h3>
         <div className="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
-          {Object.entries(TECH_LOGOS).map(([tech, url], index) => (
+          {['python', 'tensorflow', 'scikit', 'aws', 'vscode', 'django', 'docker', 'git', 'linux', 'opencv'].map((tech, index) => (
             <motion.div
               key={tech}
               initial={{ opacity: 0, scale: 0.8 }}
@@ -217,9 +217,35 @@ export default function SkillsSection() {
             >
               <div className="w-12 h-12 md:w-16 md:h-16 bg-white dark:bg-dark-200 rounded-xl shadow-md p-2 flex items-center justify-center group-hover:shadow-lg transition-all duration-300">
                 <img
-                  src={url}
+                  src={TECH_LOGOS[tech]}
                   alt={tech}
-                  className="w-8 h-8 md:w-10 md:h-10 object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                  className={`w-8 h-8 md:w-10 md:h-10 object-contain grayscale group-hover:grayscale-0 transition-all duration-300 ${tech === 'aws' ? 'p-1' : ''}`}
+                />
+              </div>
+              <p className="mt-2 text-xs text-dark-300/70 dark:text-light-300/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {tech.charAt(0).toUpperCase() + tech.slice(1)}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+
+        <h3 className="text-xl font-bold text-dark-400 dark:text-light-100 mt-12 mb-8">Additional Technologies</h3>
+        <div className="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
+          {['c', 'cpp', 'html5', 'css3', 'selenium', 'bootstrap'].map((tech, index) => (
+            <motion.div
+              key={tech}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: index * 0.05 }}
+              whileHover={{ y: -5, scale: 1.1 }}
+              className="group"
+            >
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-white dark:bg-dark-200 rounded-xl shadow-md p-2 flex items-center justify-center group-hover:shadow-lg transition-all duration-300">
+                <img
+                  src={TECH_LOGOS[tech]}
+                  alt={tech}
+                  className={`w-8 h-8 md:w-10 md:h-10 object-contain grayscale group-hover:grayscale-0 transition-all duration-300 ${tech === 'aws' ? 'p-1' : ''}`}
                 />
               </div>
               <p className="mt-2 text-xs text-dark-300/70 dark:text-light-300/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

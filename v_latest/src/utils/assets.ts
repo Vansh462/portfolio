@@ -20,18 +20,25 @@ export const TECH_LOGOS = {
   python: 'https://cdn.simpleicons.org/python/3776AB',
   react: 'https://cdn.simpleicons.org/react/61DAFB',
   tensorflow: 'https://cdn.simpleicons.org/tensorflow/FF6F00',
-  aws: 'https://cdn.simpleicons.org/amazonaws/232F3E',
+  aws: 'https://static-00.iconduck.com/assets.00/aws-icon-2048x2048-274bm1xi.png',
   docker: 'https://cdn.simpleicons.org/docker/2496ED',
   git: 'https://cdn.simpleicons.org/git/F05032',
   javascript: 'https://cdn.simpleicons.org/javascript/F7DF1E',
   typescript: 'https://cdn.simpleicons.org/typescript/3178C6',
   html5: 'https://cdn.simpleicons.org/html5/E34F26',
   css3: 'https://cdn.simpleicons.org/css3/1572B6',
-  vscode: 'https://cdn.simpleicons.org/visualstudiocode/007ACC',
+  vscode: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',
   linux: 'https://cdn.simpleicons.org/linux/FCC624',
   scikit: 'https://cdn.simpleicons.org/scikitlearn/F7931E',
   opencv: 'https://cdn.simpleicons.org/opencv/5C3EE8',
   django: 'https://cdn.simpleicons.org/django/092E20',
+  c: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg',
+  cpp: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
+  selenium: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg',
+  bootstrap: 'https://cdn.simpleicons.org/bootstrap/7952B3',
+  googlecolab: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
+  vim: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vim/vim-original.svg',
+  androidstudio: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg',
 };
 
 // Project images from Unsplash (https://unsplash.com/)
@@ -63,8 +70,8 @@ export const getRandomPattern = (patterns: Record<string, string>) => {
 
 // Helper function to create a CSS background pattern
 export const createPatternBackground = (
-  patternUrl: string, 
-  bgColor: string = 'rgba(255, 255, 255, 0.95)', 
+  patternUrl: string,
+  bgColor: string = 'rgba(255, 255, 255, 0.95)',
   patternOpacity: number = 0.1
 ) => {
   return {

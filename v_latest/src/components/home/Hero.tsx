@@ -167,6 +167,8 @@ export default function Hero() {
                 iconPosition="right"
                 animate
                 className="backdrop-blur-sm bg-white/30 dark:bg-dark-300/30 hover:bg-white/50 dark:hover:bg-dark-300/50 transition-all duration-300"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Download CV
               </LinkButton>
@@ -178,12 +180,12 @@ export default function Hero() {
               className="mt-12 flex flex-wrap gap-3"
             >
               <span className="text-sm text-dark-300/60 dark:text-light-300/60 mr-2">Tech Stack:</span>
-              {['python', 'tensorflow', 'scikit', 'aws', 'docker'].map((tech) => (
+              {['python', 'tensorflow', 'scikit', 'aws', 'docker', 'vscode'].map((tech) => (
                 <motion.img
                   key={tech}
                   src={TECH_LOGOS[tech as keyof typeof TECH_LOGOS]}
                   alt={tech}
-                  className="w-6 h-6 grayscale hover:grayscale-0 transition-all duration-300"
+                  className={`w-6 h-6 object-contain grayscale hover:grayscale-0 transition-all duration-300 ${tech === 'aws' ? 'p-0.5' : ''}`}
                   whileHover={{ scale: 1.2, rotate: 5 }}
                 />
               ))}

@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
+import { FileText } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
+import { LinkButton } from '@/components/ui/Button';
 import portfolioData from '@/data/portfolio';
 
 export default function AboutPage() {
@@ -17,18 +19,31 @@ export default function AboutPage() {
               transition={{ duration: 0.5 }}
             >
               <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-                I'm a passionate AI Engineer with expertise in Python, Machine Learning, and Web Technologies. 
+                I'm a passionate AI Engineer with expertise in Python, Machine Learning, and Web Technologies.
                 I enjoy solving complex problems and building innovative solutions that make a difference.
               </p>
               <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-                My journey in technology began during my undergraduate studies, where I developed a strong 
-                foundation in computer science and engineering principles. Since then, I've been continuously 
+                My journey in technology began during my undergraduate studies, where I developed a strong
+                foundation in computer science and engineering principles. Since then, I've been continuously
                 learning and expanding my skills in artificial intelligence, machine learning, and web development.
               </p>
-              <p className="text-lg text-gray-600 dark:text-gray-400">
-                When I'm not coding, you can find me exploring new technologies, contributing to open-source 
+              <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
+                When I'm not coding, you can find me exploring new technologies, contributing to open-source
                 projects, or sharing my knowledge with others through mentoring and technical workshops.
               </p>
+
+              <LinkButton
+                href="/resume.pdf"
+                variant="primary"
+                size="md"
+                icon={<FileText size={18} />}
+                iconPosition="left"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shadow-md hover:shadow-lg transition-shadow"
+              >
+                View My Resume
+              </LinkButton>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}

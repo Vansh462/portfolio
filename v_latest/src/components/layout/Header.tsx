@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, FileText } from 'lucide-react';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button } from '@/components/ui/Button';
+import { Button, LinkButton } from '@/components/ui/Button';
 
 const navItems = [
   { name: 'Home', path: '/' },
@@ -83,13 +83,23 @@ export default function Header() {
 
           <div className="ml-4 flex items-center space-x-3">
             <ThemeToggle />
-            <Button
+            <LinkButton
+              variant="outline"
+              size="sm"
+              href="/resume.pdf"
+              external={true}
+              icon={<FileText size={16} />}
+              iconPosition="left"
+            >
+              Resume
+            </LinkButton>
+            <LinkButton
               variant="primary"
               size="sm"
-              href="/contact"
+              href="/contact#contact-form"
             >
               Hire Me
-            </Button>
+            </LinkButton>
           </div>
         </nav>
 
@@ -136,15 +146,26 @@ export default function Header() {
                     </Link>
                   );
                 })}
-                <div className="pt-4 mt-4 border-t border-light-500/50 dark:border-dark-100/50">
-                  <Button
+                <div className="pt-4 mt-4 border-t border-light-500/50 dark:border-dark-100/50 space-y-3">
+                  <LinkButton
+                    variant="outline"
+                    size="sm"
+                    href="/resume.pdf"
+                    external={true}
+                    icon={<FileText size={16} />}
+                    iconPosition="left"
+                    fullWidth
+                  >
+                    View Resume
+                  </LinkButton>
+                  <LinkButton
                     variant="primary"
                     size="sm"
-                    href="/contact"
+                    href="/contact#contact-form"
                     fullWidth
                   >
                     Hire Me
-                  </Button>
+                  </LinkButton>
                 </div>
               </nav>
             </div>

@@ -23,7 +23,7 @@ const portfolioData: PortfolioData = {
         },
         {
           platform: 'LinkedIn',
-          url: 'https://www.linkedin.com/in/vansh-oberoi-62baa6178',
+          url: 'https://www.linkedin.com/in/vansh-oberoi-62baa6178/?trk=opento_sprofile_details',
           icon: 'linkedin',
         },
         {
@@ -31,13 +31,18 @@ const portfolioData: PortfolioData = {
           url: 'https://github.com/Vansh462',
           icon: 'github',
         },
+        {
+          platform: 'Instagram',
+          url: 'https://www.instagram.com/vanshoberoi3103?igsh=YWxhbW9zMWJqeXBy',
+          icon: 'instagram',
+        },
       ],
     },
   },
   skills: [
     {
       name: 'Python',
-      level: 90,
+      level: 95,
       icon: 'python',
       category: 'Programming',
     },
@@ -48,6 +53,12 @@ const portfolioData: PortfolioData = {
       category: 'AI',
     },
     {
+      name: 'C/C++',
+      level: 85,
+      icon: 'code',
+      category: 'Programming',
+    },
+    {
       name: 'HTML/CSS',
       level: 80,
       icon: 'html5',
@@ -55,15 +66,9 @@ const portfolioData: PortfolioData = {
     },
     {
       name: 'SQL',
-      level: 90,
+      level: 85,
       icon: 'database',
       category: 'Data',
-    },
-    {
-      name: 'OOPS (C/C++/Java)',
-      level: 85,
-      icon: 'code',
-      category: 'Programming',
     },
   ],
   technologies: [
@@ -74,9 +79,13 @@ const portfolioData: PortfolioData = {
     { name: 'Django' },
     { name: 'AWS Sagemaker' },
     { name: 'Git' },
+    { name: 'VS Code' },
+    { name: 'Vim' },
     { name: 'Linux' },
     { name: 'Google Colab' },
     { name: 'Docker' },
+    { name: 'Selenium' },
+    { name: 'Multiprocessing' },
   ],
   experience: [
     {
@@ -93,11 +102,12 @@ const portfolioData: PortfolioData = {
         'Leveraged technologies including AWS Sagemaker, GCS, and Docker',
       ],
       technologies: [
+        { name: 'GenAI (OpenAI, Google AI Studio, DeepSeek)' },
+        { name: 'Django' },
+        { name: 'Bootstrap' },
         { name: 'AWS Sagemaker' },
         { name: 'Docker' },
         { name: 'Python' },
-        { name: 'DeepSeek' },
-        { name: 'GCS' },
       ],
     },
   ],
@@ -116,12 +126,14 @@ const portfolioData: PortfolioData = {
     },
     {
       title: 'Official Site Link Scraping',
-      description: 'Developed a web scraping solution to extract official website links from Google search results. Implemented using Python with Beautiful Soup for parsing HTML content. Created a user-friendly interface for inputting search queries and viewing results. Optimized the scraping process to handle various website structures and formats. Included error handling and retry mechanisms for robust performance.',
+      description: 'Led a backend project to scrape official bank links using only the bank\'s name as input, automating data extraction. Implemented the Google library for efficient scraping after researching alternatives like APIs and Selenium. Explored multithreading and multiprocessing, ultimately applying multiprocessing for better performance. Gained insights into web scraping, backend processes, and optimization techniques through hands-on research and application.',
       technologies: [
         { name: 'Python' },
+        { name: 'Selenium' },
+        { name: 'Google Library' },
         { name: 'Beautiful Soup' },
-        { name: 'Web Scraping' },
-        { name: 'HTML Parsing' },
+        { name: 'Multiprocessing' },
+        { name: 'Threads' },
       ],
       featured: true,
     },
@@ -137,10 +149,16 @@ const portfolioData: PortfolioData = {
   ],
   leadership: [
     {
-      title: 'Technical Lead',
-      organization: 'College Technical Club',
-      date: '2023 - Present',
-      description: 'Leading technical workshops and mentoring junior students in programming and AI concepts.',
+      title: 'Design Team Head',
+      organization: 'ECell',
+      date: 'Spring 2022 - 2023',
+      description: 'Served as the Design Team Head for GNDU E-Cell, leading a team of 4 members. Collaborated with team members to create numerous innovative designs for various projects. Managed and guided the design team while working closely with other teams, including the Tech Team and Marketing Team. Gained valuable experience in teamwork, design management, and cross-team collaboration.',
+    },
+    {
+      title: 'Backend Team Learner',
+      organization: 'ARAMBH startup',
+      date: 'Aug 2024 - Oct 2024',
+      description: 'Served as a lead at Arambh startup, collaborating with colleagues from the ECE department of GNDU University. Applied and tested my Python knowledge through various backend projects assigned by the team.',
     },
   ],
 };

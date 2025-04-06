@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Github, Linkedin, Twitter, Facebook, Mail, Heart, Phone, MapPin, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Twitter, Facebook, Instagram, Mail, Heart, Phone, MapPin, ArrowUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 import portfolioData from '@/data/portfolio';
 
@@ -12,6 +12,7 @@ export default function Footer() {
     linkedin: <Linkedin size={20} />,
     twitter: <Twitter size={20} />,
     facebook: <Facebook size={20} />,
+    instagram: <Instagram size={20} />,
   };
 
   const scrollToTop = () => {

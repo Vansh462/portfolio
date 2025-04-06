@@ -138,6 +138,8 @@ export default function CTASection() {
                   icon={<ArrowSquareOut weight="bold" size={18} />}
                   iconPosition="right"
                   animate
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full bg-white/10 text-white border-white/30 hover:bg-white/20 transition-all duration-300"
                 >
                   View Full Resume
