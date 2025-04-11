@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { GithubLogo, LinkedinLogo, TwitterLogo, FacebookLogo, InstagramLogo } from '@phosphor-icons/react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import portfolioData from '@/data/portfolio';
 
@@ -23,14 +24,28 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitError('');
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      // Send form data to Formspree
+      const response = await fetch('https://formspree.io/f/mkgjkdbw', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
+
+      // Success
       setSubmitSuccess(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
 
@@ -38,7 +53,11 @@ export default function ContactPage() {
       setTimeout(() => {
         setSubmitSuccess(false);
       }, 5000);
-    }, 1500);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'An unexpected error occurred');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -121,19 +140,19 @@ export default function ContactPage() {
                     let SocialIcon;
                     switch (social.platform.toLowerCase()) {
                       case 'github':
-                        SocialIcon = Github;
+                        SocialIcon = GithubLogo;
                         break;
                       case 'linkedin':
-                        SocialIcon = Linkedin;
+                        SocialIcon = LinkedinLogo;
                         break;
                       case 'twitter':
-                        SocialIcon = Twitter;
+                        SocialIcon = TwitterLogo;
                         break;
                       case 'facebook':
-                        SocialIcon = Facebook;
+                        SocialIcon = FacebookLogo;
                         break;
                       case 'instagram':
-                        SocialIcon = Instagram;
+                        SocialIcon = InstagramLogo;
                         break;
                       default:
                         SocialIcon = null;

@@ -1,11 +1,11 @@
 # Vansh Oberoi - AI Engineer Portfolio
 
-![Portfolio Preview](/portfolio-screenshot.png)
+![Portfolio Preview](https://raw.githubusercontent.com/Vansh462/portfolio/main/public/portfolio-screenshot.png)
 
 A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS to showcase my skills, projects, and experience as an AI Engineer. This portfolio features interactive visualizations, performance optimizations, and a clean, professional design.
 
-<!-- Add your live demo link when deployed -->
-<!-- [View Live Demo](https://your-portfolio-url.com) -->
+### Live Demo
+[View Live Demo](https://portfolio-vansh-oberois-projects.vercel.app/) - Deployed on Vercel
 
 ## 👨‍💻 About Me
 
