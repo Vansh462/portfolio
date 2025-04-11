@@ -1,8 +1,23 @@
 import { motion } from 'framer-motion';
 import { FileText } from 'lucide-react';
+import { Suspense, lazy } from 'react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import { LinkButton } from '@/components/ui/Button';
 import portfolioData from '@/data/portfolio';
+
+// Lazy load the SkillsNetwork component
+const SkillsNetwork = lazy(() => import('@/components/skills/SkillsNetwork'));
+
+// Component loader with skeleton
+const ComponentLoader = () => (
+  <div className="py-20">
+    <div className="container mx-auto px-4">
+      <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-1/3 mb-6 animate-pulse"></div>
+      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-2/3 mb-10 animate-pulse"></div>
+      <div className="h-64 bg-gray-200 dark:bg-gray-700 rounded mb-6 animate-pulse"></div>
+    </div>
+  </div>
+);
 
 export default function AboutPage() {
   const { personal, education, leadership, technologies } = portfolioData;
@@ -137,8 +152,17 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Technologies Section */}
+      {/* Skills Network Visualization */}
       <section className="py-20 bg-gray-50 dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <Suspense fallback={<ComponentLoader />}>
+            <SkillsNetwork />
+          </Suspense>
+        </div>
+      </section>
+
+      {/* Technologies Section */}
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <SectionHeading
             title="Technologies I Use"

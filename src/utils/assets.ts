@@ -39,6 +39,13 @@ export const TECH_LOGOS = {
   googlecolab: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
   vim: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vim/vim-original.svg',
   androidstudio: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg',
+  tableau: 'https://cdn.simpleicons.org/tableau/E97627',
+  openai: 'https://cdn.simpleicons.org/openai/412991',
+  gemini: 'https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_1.max-1000x1000.png',
+  brain: 'https://cdn.simpleicons.org/thealgorithms/00BCB4',
+  chart: 'https://cdn.simpleicons.org/chartdotjs/FF6384',
+  aiagents: 'https://cdn.simpleicons.org/probot/00B0D8',
+  largelanguagemodels: 'https://cdn.simpleicons.org/openai/412991',
 };
 
 // Project images from Unsplash (https://unsplash.com/)

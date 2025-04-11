@@ -1,194 +1,118 @@
-# Personal Portfolio Website
+# Vansh Oberoi - AI Engineer Portfolio
 
-A modern, responsive portfolio website built with React, Vite, and Tailwind CSS. This portfolio showcases my skills, projects, and professional experience as an AI Engineer.
+![Portfolio Preview](/portfolio-screenshot.png)
 
-![Portfolio Screenshot](src/assets/images/profile.jpg)
+A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS to showcase my skills, projects, and experience as an AI Engineer. This portfolio features interactive visualizations, performance optimizations, and a clean, professional design.
+
+<!-- Add your live demo link when deployed -->
+<!-- [View Live Demo](https://your-portfolio-url.com) -->
+
+## 👨‍💻 About Me
+
+I'm an AI Engineer with expertise in Python, Machine Learning, and Web Technologies. Currently pursuing my Bachelor of Technology in Computer Science & Engineering at Guru Nanak Dev University. I have experience working with GenAI platforms like OpenAI and Gemini 2.0, and I've built various ML models and AI solutions.
 
 ## 🚀 Features
 
-- **Modern React Architecture** - Built with React 19 and Vite for lightning-fast performance
-- **Responsive Design** - Fully responsive layout that works on all devices
+- **Modern React Architecture** - Built with React 18, TypeScript, and Vite
+- **Responsive Design** - Fully responsive on all devices
 - **Dark/Light Mode** - Theme toggle with system preference detection
-- **Smooth Page Transitions** - Using Framer Motion for fluid animations
-- **Dynamic Content** - Content managed through a centralized data structure
 - **Interactive UI Components** - Custom UI components with animations and tooltips
-- **Contact Form** - Functional contact form for visitor inquiries
-- **SEO Optimized** - Meta tags and semantic HTML for better search engine visibility
-- **Accessibility** - Designed with accessibility in mind
+- **Interactive Skills Visualization** - Network graph showing relationships between skills (NEW!)
+- **Certifications Gallery** - Interactive gallery to showcase certifications (NEW!)
+- **Performance Optimized** - Code splitting, lazy loading, and optimized assets (NEW!)
+- **SEO Friendly** - Proper metadata and semantic HTML
 
 ## 🛠️ Technologies Used
 
-### Core Technologies
-- **React 19** - Latest version of React with improved performance
-- **TypeScript** - For type safety and better developer experience
-- **Vite** - Next-generation frontend tooling for faster development
-- **React Router v7** - For client-side routing
-- **Tailwind CSS** - Utility-first CSS framework for rapid UI development
+### Frontend
+- **React 18** - Modern component-based architecture
+- **TypeScript** - Type safety and better developer experience
+- **Tailwind CSS** - Utility-first CSS framework
+- **Framer Motion** - Animations and transitions
+- **React Router** - Client-side routing
 
-### UI/UX
-- **Framer Motion** - For smooth animations and transitions
-- **GSAP** - For advanced animations
+### UI Components
 - **Lucide React** - For beautiful icons including social media icons
 - **Phosphor Icons** - Additional icon set with customizable weights
+- **ReactFlow** - For interactive skills network visualization
 
-### State Management
-- **React Context API** - For theme management
+### Build Tools
+- **Vite** - Next generation frontend tooling
+- **ESLint** - Code linting
+- **PostCSS** - CSS processing
 
-### Performance Optimization
-- **Code Splitting** - For faster initial load times
-- **Lazy Loading** - Components and images load as needed
-- **Optimized Build** - Minification and tree-shaking for production
-
-## 📋 Pages
-
-1. **Home** - Introduction with hero section, skills overview, featured projects, testimonials, and call-to-action
-2. **About** - Detailed information about me, education, leadership experience, and technologies
-3. **Experience** - Professional work experience and achievements
-4. **Projects** - Showcase of projects with filtering capabilities
-5. **Contact** - Contact form and information
-6. **404** - Custom not found page
-
-## 🏗️ Project Structure
+## 📋 Project Structure
 
 ```
-portfolio/
-├── public/              # Public assets
-├── src/
-│   ├── assets/          # Images, fonts, etc.
-│   ├── components/      # Reusable components
-│   │   ├── home/        # Home page specific components
-│   │   ├── layout/      # Layout components (Header, Footer)
-│   │   └── ui/          # UI components (Button, Card, etc.)
-│   ├── data/            # Portfolio data
-│   ├── pages/           # Page components
-│   ├── types/           # TypeScript type definitions
-│   ├── utils/           # Utility functions and constants
-│   ├── App.tsx          # Main App component
-│   ├── index.css        # Global styles
-│   └── main.tsx         # Entry point
-├── index.html           # HTML template
-├── package.json         # Dependencies and scripts
-├── tailwind.config.cjs  # Tailwind configuration
-├── tsconfig.json        # TypeScript configuration
-└── vite.config.ts       # Vite configuration
+/
+  /public            # Static assets and files
+  /src               # Source code
+    /components      # Reusable UI components
+      /ui            # Basic UI components
+      /layout        # Layout components
+      /home          # Home page components
+      /skills        # Skills visualization
+      /certifications # Certifications gallery
+    /data            # Portfolio data
+    /pages           # Page components
+    /utils           # Utility functions
+    /styles          # Global styles
+  /dist              # Production build output
 ```
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-
-- Node.js (v16 or higher)
-- npm or yarn or pnpm
+- Node.js (v16+)
+- npm or yarn
 
 ### Installation
 
-1. Clone the repository
-   ```bash
-   git clone https://github.com/yourusername/portfolio.git
-   cd portfolio
-   ```
+```bash
+# Clone the repository
+git clone https://github.com/Vansh462/portfolio.git
 
-2. Install dependencies
-   ```bash
-   npm install
-   # or
-   yarn install
-   # or
-   pnpm install
-   ```
+# Navigate to the project directory
+cd portfolio
 
-3. Start the development server
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   # or
-   pnpm dev
-   ```
+# Install dependencies
+npm install
 
-4. Open your browser and navigate to `http://localhost:3000`
+# Start the development server
+npm run dev
+```
 
-### Building for Production
+## 🌐 Deployment
+
+This site is optimized for deployment on Vercel, but can also be deployed to Netlify or GitHub Pages.
+
+### Vercel Deployment (Recommended)
+
+1. Push your code to GitHub
+2. Go to [Vercel](https://vercel.com) and sign up/login with your GitHub account
+3. Click "New Project" and import your repository
+4. Vercel will automatically detect the correct settings
+5. Click "Deploy"
+
+### Manual Build
 
 ```bash
+# Build for production
 npm run build
-# or
-yarn build
-# or
-pnpm build
+
+# The build output will be in the dist/ folder
 ```
 
-### Preview Production Build
+## 📝 License
 
-```bash
-npm run preview
-# or
-yarn preview
-# or
-pnpm preview
-```
+This project is open source and available under the MIT License.
 
-### Serving Production Build
+## 📞 Contact
 
-```bash
-npm run serve
-# or
-yarn serve
-# or
-pnpm serve
-```
+Vansh Oberoi - [learnsolo462@gmail.com](mailto:learnsolo462@gmail.com)
 
-## 🎨 Customization
+LinkedIn: [linkedin.com/in/Vansh462](https://www.linkedin.com/in/vansh-oberoi-62baa6178/?trk=opento_sprofile_details)
 
-The portfolio is designed to be easily customizable:
+GitHub: [github.com/Vansh462](https://github.com/Vansh462/)
 
-1. **Content**: Update the `src/data/portfolio.ts` file with your personal information, skills, projects, and experience.
-
-2. **Styling**: Modify the Tailwind configuration in `tailwind.config.cjs` to change colors, fonts, and other design elements.
-
-3. **Components**: Customize or extend the components in the `src/components` directory.
-
-## 📱 Responsive Design
-
-The portfolio is fully responsive and optimized for:
-- Mobile devices
-- Tablets
-- Desktops
-- Large screens
-
-## 🌙 Dark Mode
-
-The application supports dark mode with:
-- System preference detection
-- Manual toggle
-- Persistent preference (saved to localStorage)
-
-## 🔍 SEO
-
-The portfolio includes:
-- Semantic HTML
-- Meta tags
-- Descriptive page titles
-- Alt text for images
-
-## 🚀 Performance
-
-The application is optimized for performance:
-- Fast initial load time
-- Code splitting
-- Optimized assets
-- Efficient animations
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🙏 Acknowledgements
-
-- [React](https://reactjs.org/)
-- [Vite](https://vitejs.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [React Router](https://reactrouter.com/)
-- [Lucide Icons](https://lucide.dev/)
-- [Phosphor Icons](https://phosphoricons.com/)
+Instagram: [@vanshoberoi3103](https://www.instagram.com/vanshoberoi3103?igsh=YWxhbW9zMWJqeXBy)
