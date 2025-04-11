@@ -65,8 +65,8 @@ export const SOCIAL_ICONS = {
   instagram: 'https://cdn.simpleicons.org/instagram/E4405F',
 };
 
-// Profile image (using a placeholder - replace with your actual image)
-export const PROFILE_IMAGE = 'https://ik.imagekit.io/vanshoberoi/portfolio/profile.jpg';
+// Profile image from public folder (not processed by bundler)
+export const PROFILE_IMAGE = '/profile.jpg';
 
 // Helper function to get a random pattern
 export const getRandomPattern = (patterns: Record<string, string>) => {

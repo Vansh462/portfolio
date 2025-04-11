@@ -1,6 +1,6 @@
 /**
  * Modern asset preloading system
- * 
+ *
  * This utility helps preload critical assets like images, fonts, and scripts
  * to improve perceived performance, similar to techniques used by major tech companies.
  */
@@ -9,7 +9,7 @@
 const criticalImages = [
   // Add paths to critical images here
   '/assets/hero-bg.webp',
-  '/assets/profile.webp',
+  '/profile.jpg',
 ];
 
 // List of critical fonts to preload
@@ -41,7 +41,7 @@ const preloadFont = (href: string): void => {
   link.as = 'style';
   link.href = href;
   document.head.appendChild(link);
-  
+
   // Also load the font
   const fontLink = document.createElement('link');
   fontLink.rel = 'stylesheet';
@@ -62,7 +62,7 @@ export const preloadCriticalAssets = (): void => {
           console.warn(`Failed to preload image: ${src}`);
         });
       });
-      
+
       // Preload critical fonts
       criticalFonts.forEach(href => {
         preloadFont(href);
@@ -76,7 +76,7 @@ export const preloadCriticalAssets = (): void => {
           console.warn(`Failed to preload image: ${src}`);
         });
       });
-      
+
       criticalFonts.forEach(href => {
         preloadFont(href);
       });
@@ -90,6 +90,6 @@ export const preloadCriticalAssets = (): void => {
 export const initPerformanceOptimizations = (): void => {
   // Preload critical assets
   preloadCriticalAssets();
-  
+
   // Add more performance optimizations here
 };

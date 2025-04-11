@@ -20,6 +20,7 @@ I'm an AI Engineer with expertise in Python, Machine Learning, and Web Technolog
 - **Interactive Skills Visualization** - Network graph showing relationships between skills (NEW!)
 - **Certifications Gallery** - Interactive gallery to showcase certifications (NEW!)
 - **Performance Optimized** - Code splitting, lazy loading, and optimized assets (NEW!)
+- **Functional Contact Form** - Integrated with Formspree for easy contact (NEW!)
 - **SEO Friendly** - Proper metadata and semantic HTML
 
 ## 🛠️ Technologies Used
@@ -32,9 +33,12 @@ I'm an AI Engineer with expertise in Python, Machine Learning, and Web Technolog
 - **React Router** - Client-side routing
 
 ### UI Components
-- **Lucide React** - For beautiful icons including social media icons
-- **Phosphor Icons** - Additional icon set with customizable weights
+- **Lucide React** - For beautiful icons
+- **Phosphor Icons** - Social media icons and additional icon set
 - **ReactFlow** - For interactive skills network visualization
+
+### Backend Services
+- **Formspree** - Form handling for the contact form
 
 ### Build Tools
 - **Vite** - Next generation frontend tooling
@@ -47,6 +51,8 @@ I'm an AI Engineer with expertise in Python, Machine Learning, and Web Technolog
 /
   /public            # Static assets and files
   /src               # Source code
+    /assets          # Project assets
+      /images        # Image assets
     /components      # Reusable UI components
       /ui            # Basic UI components
       /layout        # Layout components
@@ -54,9 +60,10 @@ I'm an AI Engineer with expertise in Python, Machine Learning, and Web Technolog
       /skills        # Skills visualization
       /certifications # Certifications gallery
     /data            # Portfolio data
+    /hooks           # Custom React hooks
     /pages           # Page components
+    /types           # TypeScript type definitions
     /utils           # Utility functions
-    /styles          # Global styles
   /dist              # Production build output
 ```
 
