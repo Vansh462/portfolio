@@ -1,18 +1,39 @@
 import ReactGA from 'react-ga4';
 import { analyticsConfig, analyticsFeatures } from '@/config/analytics';
+import { hasAnalyticsConsent, onConsentChange } from './cookieConsent';
 
 /**
  * Initialize Google Analytics
  */
 export const initGA = (): void => {
   if (typeof window !== 'undefined' && analyticsConfig.googleAnalytics.enabled) {
-    // Skip in development mode unless explicitly enabled
-    if (import.meta.env.DEV && !import.meta.env.VITE_ENABLE_ANALYTICS) {
-      console.log('Google Analytics not initialized in development mode');
-      return;
+    // In development mode, log but still initialize (for testing)
+    if (import.meta.env.DEV) {
+      console.log('Google Analytics initialized in development mode (for testing)');
     }
 
-    ReactGA.initialize(analyticsConfig.googleAnalytics.measurementId);
+    // Initialize GA with consent mode
+    ReactGA.initialize(analyticsConfig.googleAnalytics.measurementId, {
+      // Only use cookies if consent is given
+      gaOptions: {
+        storage: hasAnalyticsConsent() ? 'cookies' : 'none',
+      }
+    });
+
+    // Update GA settings when consent changes
+    onConsentChange(() => {
+      if (hasAnalyticsConsent()) {
+        // User gave consent, enable cookies
+        ReactGA.gtag('consent', 'update', {
+          analytics_storage: 'granted'
+        });
+      } else {
+        // User declined consent, disable cookies
+        ReactGA.gtag('consent', 'update', {
+          analytics_storage: 'denied'
+        });
+      }
+    });
   }
 };
 
@@ -23,7 +44,10 @@ export const initGA = (): void => {
 export const trackPageView = (path: string): void => {
   if (!analyticsFeatures.pageViews) return;
 
-  ReactGA.send({ hitType: 'pageview', page: path });
+  // Only track if user has given consent
+  if (hasAnalyticsConsent()) {
+    ReactGA.send({ hitType: 'pageview', page: path });
+  }
 };
 
 /**
@@ -39,11 +63,14 @@ export const trackEvent = (
 ): void => {
   if (!analyticsFeatures.events) return;
 
-  ReactGA.event({
-    category,
-    action,
-    label
-  });
+  // Only track if user has given consent
+  if (hasAnalyticsConsent()) {
+    ReactGA.event({
+      category,
+      action,
+      label
+    });
+  }
 };
 
 /**

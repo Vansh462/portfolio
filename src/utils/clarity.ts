@@ -6,24 +6,45 @@
  */
 
 import { analyticsConfig } from '@/config/analytics';
+import { hasAnalyticsConsent, onConsentChange } from './cookieConsent';
 
 /**
  * Initialize Microsoft Clarity
  */
 export const initClarity = (): void => {
   if (typeof window !== 'undefined' && analyticsConfig.clarity.enabled) {
-    // Skip in development mode unless explicitly enabled
-    if (import.meta.env.DEV && !import.meta.env.VITE_ENABLE_ANALYTICS) {
-      console.log('Clarity not initialized in development mode');
-      return;
+    // In development mode, log but still initialize (for testing)
+    if (import.meta.env.DEV) {
+      console.log('Clarity initialized in development mode (for testing)');
     }
 
-    // Add Clarity script
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", analyticsConfig.clarity.projectId);
+    // Only initialize Clarity if user has given consent
+    if (hasAnalyticsConsent()) {
+      // Add Clarity script
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", analyticsConfig.clarity.projectId);
+    }
+
+    // Handle consent changes
+    onConsentChange(() => {
+      if (hasAnalyticsConsent()) {
+        // User gave consent, initialize Clarity if not already initialized
+        if (!(window as any).clarity) {
+          initClarity();
+        }
+      } else {
+        // User declined consent, remove Clarity if possible
+        // Note: Clarity doesn't have a built-in method to disable after loading
+        // This is a best-effort approach
+        if ((window as any).clarity) {
+          // Disable tracking
+          (window as any).clarity("consent", false);
+        }
+      }
+    });
   }
 };
 
@@ -36,7 +57,8 @@ export const trackClarityEvent = (
   eventName: string,
   metadata?: Record<string, string | number | boolean>
 ): void => {
-  if (typeof window !== 'undefined' && (window as any).clarity) {
+  // Only track if user has given consent
+  if (typeof window !== 'undefined' && (window as any).clarity && hasAnalyticsConsent()) {
     (window as any).clarity("event", eventName, metadata);
   }
 };

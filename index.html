@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
@@ -7,15 +7,44 @@
     <meta name="description" content="Vansh Oberoi - AI Engineer and Full Stack Developer Portfolio showcasing projects, skills, and experience in Python, Machine Learning, and Web Development." />
     <meta name="keywords" content="AI Engineer, Machine Learning, Python, Portfolio, Vansh Oberoi" />
     <meta name="author" content="Vansh Oberoi" />
+    <meta name="theme-color" content="#4f46e5" />
+    <link rel="manifest" href="/manifest.json" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdn.simpleicons.org" />
     <link rel="preconnect" href="https://images.unsplash.com" />
 
+    <!-- Apple PWA meta tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Vansh Portfolio" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+
     <!-- Preload critical resources -->
     <link rel="preload" href="/profile.webp" as="image" type="image/webp" />
     <link rel="preload" href="/patterns/topography.svg" as="image" type="image/svg+xml" />
     <link rel="preload" href="/src/main.tsx" as="script" />
+
+    <!-- Cookiebot Cookie Consent -->
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="4d73c292-732d-4fd3-9faa-ca0f96104dcb" data-blockingmode="auto" type="text/javascript"></script>
+
+    <!-- Manual trigger for Cookiebot dialog -->
+    <script>
+      window.addEventListener('load', function() {
+        console.log('Window loaded, checking for Cookiebot');
+        if (window.Cookiebot) {
+          console.log('Cookiebot found:', window.Cookiebot.consent);
+        } else {
+          console.log('Cookiebot not found, trying to load it manually');
+          // Try to load it manually if it didn't load automatically
+          var script = document.createElement('script');
+          script.src = 'https://consent.cookiebot.com/uc.js';
+          script.setAttribute('data-cbid', '4d73c292-732d-4fd3-9faa-ca0f96104dcb');
+          script.setAttribute('data-blockingmode', 'auto');
+          document.head.appendChild(script);
+        }
+      });
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap&text=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,;:?!(){}[]" rel="stylesheet" />
     <style>
       /* Fallback font to prevent layout shifts */
@@ -90,5 +119,20 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js')
+            .then(registration => {
+              console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch(error => {
+              console.error('Service Worker registration failed:', error);
+            });
+        });
+      }
+    </script>
   </body>
 </html>

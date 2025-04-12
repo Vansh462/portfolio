@@ -8,9 +8,11 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview --port 3000",
-    "serve": "serve -s dist -p 3000"
+    "serve": "serve -s dist -p 3000",
+    "optimize-images": "node scripts/optimize-images.js"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.1",
     "@phosphor-icons/react": "^2.1.7",
     "d3-force": "^3.0.0",
     "framer-motion": "^12.6.3",
@@ -27,6 +29,8 @@
     "@eslint/js": "^9.21.0",
     "@types/node": "^22.14.0",
     "@types/react": "^19.0.10",
+    "glob": "^10.3.10",
+    "sharp": "^0.33.3",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.21",

@@ -3,6 +3,8 @@ import { useEffect, useState, Suspense, lazy } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import { motion } from 'framer-motion';
+import KeyboardShortcutsDialog from '@/components/ui/KeyboardShortcutsDialog';
+import { trackEvent } from '@/utils/analytics';
 
 // Lazy load new feature components
 const SkillsNetwork = lazy(() => import('@/components/skills/SkillsNetwork'));
@@ -22,6 +24,7 @@ const ComponentLoader = () => (
 export default function Layout() {
   const location = useLocation();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isShortcutsOpen, setIsShortcutsOpen] = useState(false);
 
   // Scroll to top on route change
   useEffect(() => {
@@ -59,7 +62,13 @@ export default function Layout() {
         )}
 
       </motion.main>
-      <Footer />
+      <Footer onOpenShortcuts={() => setIsShortcutsOpen(true)} />
+
+      {/* Keyboard Shortcuts Dialog */}
+      <KeyboardShortcutsDialog
+        isOpen={isShortcutsOpen}
+        onClose={() => setIsShortcutsOpen(false)}
+      />
     </div>
   );
 }

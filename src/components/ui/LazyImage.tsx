@@ -1,13 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
-interface LazyImageProps {
+interface LazyImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
   alt: string;
   className?: string;
   placeholderColor?: string;
   threshold?: number;
   blur?: boolean;
+  aspectRatio?: string;
 }
 
 const LazyImage = ({
@@ -17,6 +18,8 @@ const LazyImage = ({
   placeholderColor = '#f3f4f6',
   threshold = 0.1,
   blur = true,
+  aspectRatio,
+  ...props
 }: LazyImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
@@ -57,7 +60,10 @@ const LazyImage = ({
     <div
       ref={imgRef}
       className={`relative overflow-hidden ${className}`}
-      style={{ backgroundColor: placeholderColor }}
+      style={{
+        backgroundColor: placeholderColor,
+        aspectRatio: aspectRatio || (props.width && props.height ? `${props.width}/${props.height}` : 'auto')
+      }}
     >
       {isInView && (
         <>
@@ -71,6 +77,8 @@ const LazyImage = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: isLoaded ? 1 : 0 }}
             transition={{ duration: 0.5 }}
+            loading="lazy"
+            {...props}
           />
           {blur && !isLoaded && (
             <div className="absolute inset-0 animate-pulse bg-gray-200 dark:bg-gray-700" />

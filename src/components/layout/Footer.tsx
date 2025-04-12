@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom';
-import { Github, Linkedin, Twitter, Facebook, Instagram, Mail, Heart, Phone, MapPin, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Twitter, Facebook, Instagram, Mail, Heart, Phone, MapPin, ArrowUp, Command } from 'lucide-react';
 import { motion } from 'framer-motion';
 import portfolioData from '@/data/portfolio';
+import { trackEvent } from '@/utils/analytics';
 
-export default function Footer() {
+interface FooterProps {
+  onOpenShortcuts?: () => void;
+}
+
+export default function Footer({ onOpenShortcuts }: FooterProps) {
   const { personal } = portfolioData;
   const currentYear = new Date().getFullYear();
 
@@ -189,9 +194,38 @@ export default function Footer() {
 
         <div className="border-t border-light-500/30 dark:border-dark-100/30 pt-8 text-center">
           <div className="flex flex-col md:flex-row items-center justify-between">
-            <p className="text-dark-600 dark:text-light-200 text-sm mb-4 md:mb-0">
-              © {currentYear} Vansh Oberoi. All rights reserved.
-            </p>
+            <div className="flex flex-col md:flex-row items-center">
+              <p className="text-dark-600 dark:text-light-200 text-sm mb-2 md:mb-0 md:mr-4">
+                © {currentYear} Vansh Oberoi. All rights reserved.
+              </p>
+              <div className="flex items-center space-x-4 mb-4 md:mb-0">
+                <Link
+                  to="/privacy-policy"
+                  className="text-dark-600 dark:text-light-200 text-sm hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                >
+                  Privacy Policy
+                </Link>
+                <button
+                  onClick={() => (window as any).openCookieDialog?.() || document.getElementById('CookiebotDialogTrigger')?.click()}
+                  className="text-dark-600 dark:text-light-200 text-sm hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                >
+                  Cookie Settings
+                </button>
+                <button
+                  onClick={() => {
+                    if (onOpenShortcuts) {
+                      onOpenShortcuts();
+                      trackEvent('UI', 'Open Shortcuts', 'Footer');
+                    }
+                  }}
+                  className="text-dark-600 dark:text-light-200 text-sm hover:text-primary-600 dark:hover:text-primary-400 transition-colors flex items-center"
+                  aria-label="Keyboard shortcuts"
+                >
+                  <Command size={14} className="mr-1" />
+                  Shortcuts
+                </button>
+              </div>
+            </div>
             <div className="flex items-center">
               <p className="text-dark-600 dark:text-light-200 text-sm flex items-center">
                 Made with <Heart size={14} className="mx-1 text-red-500 animate-pulse" /> using
