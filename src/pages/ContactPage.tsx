@@ -4,6 +4,7 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { GithubLogo, LinkedinLogo, TwitterLogo, FacebookLogo, InstagramLogo } from '@phosphor-icons/react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import portfolioData from '@/data/portfolio';
+import { trackFormSubmission, trackEvent } from '@/utils/analytics';
 
 export default function ContactPage() {
   const { personal } = portfolioData;
@@ -49,12 +50,18 @@ export default function ContactPage() {
       setSubmitSuccess(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
 
+      // Track successful form submission
+      trackFormSubmission('contact', true);
+
       // Reset success message after 5 seconds
       setTimeout(() => {
         setSubmitSuccess(false);
       }, 5000);
     } catch (error) {
       setSubmitError(error instanceof Error ? error.message : 'An unexpected error occurred');
+
+      // Track failed form submission
+      trackFormSubmission('contact', false);
     } finally {
       setIsSubmitting(false);
     }
@@ -92,6 +99,7 @@ export default function ContactPage() {
                     <a
                       href={`mailto:${personal.contact.email}`}
                       className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                      onClick={() => trackEvent('Contact', 'Email Click', 'Contact Page')}
                     >
                       {personal.contact.email}
                     </a>
@@ -166,6 +174,7 @@ export default function ContactPage() {
                         rel="noopener noreferrer"
                         className="bg-gray-100 dark:bg-gray-800 p-3 rounded-full hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-colors group relative"
                         aria-label={social.platform}
+                        onClick={() => trackEvent('Social', 'Click', social.platform)}
                       >
                         <span className="sr-only">{social.platform}</span>
                         {SocialIcon ? (

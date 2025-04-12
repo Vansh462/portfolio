@@ -184,7 +184,7 @@ export default function Hero() {
                 <motion.img
                   key={tech}
                   src={TECH_LOGOS[tech as keyof typeof TECH_LOGOS]}
-                  alt={tech}
+                  alt={`${tech} programming language or technology icon`}
                   className={`w-6 h-6 object-contain grayscale hover:grayscale-0 transition-all duration-300 ${tech === 'aws' ? 'p-0.5' : ''}`}
                   whileHover={{ scale: 1.2, rotate: 5 }}
                 />
@@ -208,7 +208,7 @@ export default function Hero() {
               {/* Profile image */}
               <img
                 src={personal.image}
-                alt={personal.name}
+                alt={`Profile photo of ${personal.name}, AI Engineer`}
                 className="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-white dark:border-dark-300 shadow-xl z-10"
               />
 

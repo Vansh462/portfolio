@@ -27,7 +27,7 @@ export default function NotFoundPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg text-gray-600 dark:text-gray-400 max-w-md mx-auto mb-8"
+          className="text-lg text-gray-700 dark:text-gray-300 max-w-md mx-auto mb-8"
         >
           The page you are looking for might have been removed, had its name
           changed, or is temporarily unavailable.

@@ -4,12 +4,87 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Vansh Oberoi - AI Engineer Portfolio" />
+    <meta name="description" content="Vansh Oberoi - AI Engineer and Full Stack Developer Portfolio showcasing projects, skills, and experience in Python, Machine Learning, and Web Development." />
     <meta name="keywords" content="AI Engineer, Machine Learning, Python, Portfolio, Vansh Oberoi" />
     <meta name="author" content="Vansh Oberoi" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://cdn.simpleicons.org" />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/profile.webp" as="image" type="image/webp" />
+    <link rel="preload" href="/patterns/topography.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/src/main.tsx" as="script" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap&text=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,;:?!(){}[]" rel="stylesheet" />
+    <style>
+      /* Fallback font to prevent layout shifts */
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Arial');
+      }
+
+      /* Critical CSS for above-the-fold content */
+      :root {
+        font-family: 'Inter', system-ui, sans-serif;
+        line-height: 1.5;
+        font-weight: 400;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        color: #111827;
+        min-height: 100vh;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #111827;
+          color: #f3f4f6;
+        }
+      }
+
+      /* Prevent layout shifts */
+      .hero-section {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Optimize CLS for images */
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Profile image optimization */
+      .profile-image {
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      /* Optimize main content */
+      main {
+        display: block;
+        width: 100%;
+      }
+
+      /* Optimize header */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(8px);
+      }
+    </style>
     <title>Vansh Oberoi | AI Engineer</title>
   </head>
   <body>

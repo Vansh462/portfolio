@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { trackDownload, trackEvent } from '@/utils/analytics';
 
 type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost';
 type ButtonSize = 'sm' | 'md' | 'lg';
@@ -26,22 +27,22 @@ const getButtonClasses = (
   className: string = ''
 ): string => {
   const baseClasses = 'btn inline-flex items-center justify-center font-medium rounded-md transition-all focus:outline-none focus:ring-2 focus:ring-offset-2';
-  
+
   const variantClasses = {
     primary: 'btn-primary',
     secondary: 'btn-secondary',
     outline: 'btn-outline',
     ghost: 'bg-transparent hover:bg-light-300/50 dark:hover:bg-dark-200/50 text-dark-300 dark:text-light-300',
   };
-  
+
   const sizeClasses = {
     sm: 'text-xs px-3 py-1.5',
     md: 'text-sm px-4 py-2',
     lg: 'text-base px-6 py-3',
   };
-  
+
   const widthClass = fullWidth ? 'w-full' : '';
-  
+
   return `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${widthClass} ${className}`;
 };
 
@@ -108,6 +109,17 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
     </>
   );
 
+  // Track downloads and external links
+  const handleExternalClick = () => {
+    // Track resume downloads
+    if (href.includes('resume.pdf')) {
+      trackDownload('resume.pdf');
+    } else {
+      // Track other external links
+      trackEvent('Navigation', 'External Link', href);
+    }
+  };
+
   if (external) {
     if (animate) {
       return (
@@ -118,6 +130,7 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className={getButtonClasses(variant, size, fullWidth, className)}
+          onClick={handleExternalClick}
           {...props}
         >
           {buttonContent}
@@ -131,6 +144,7 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
         target="_blank"
         rel="noopener noreferrer"
         className={getButtonClasses(variant, size, fullWidth, className)}
+        onClick={handleExternalClick}
         {...props}
       >
         {buttonContent}

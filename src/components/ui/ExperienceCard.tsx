@@ -32,18 +32,18 @@ export default function ExperienceCard({
           <h3 className="text-xl font-bold text-gray-900 dark:text-white">
             {experience.title} at {experience.company}
           </h3>
-          <span className="text-sm font-medium text-gray-500 dark:text-gray-400 mt-1 md:mt-0">
+          <span className="text-sm font-medium text-gray-700 dark:text-gray-300 mt-1 md:mt-0">
             {experience.startDate} - {experience.endDate}
           </span>
         </div>
 
         {experience.location && (
-          <p className="text-gray-600 dark:text-gray-400 mb-4">
+          <p className="text-gray-700 dark:text-gray-300 mb-4">
             {experience.location}
           </p>
         )}
 
-        <ul className="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400 mb-4">
+        <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 mb-4">
           {experience.description.map((item, i) => (
             <li key={i}>{item}</li>
           ))}

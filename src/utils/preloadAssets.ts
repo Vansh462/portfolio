@@ -9,7 +9,7 @@
 const criticalImages = [
   // Add paths to critical images here
   '/assets/hero-bg.webp',
-  '/profile.jpg',
+  '/profile.webp',
 ];
 
 // List of critical fonts to preload

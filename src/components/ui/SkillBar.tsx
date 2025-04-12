@@ -21,7 +21,7 @@ export default function SkillBar({ skill, index }: SkillBarProps) {
             {skill.name}
           </span>
         </div>
-        <span className="text-sm text-gray-600 dark:text-gray-400">
+        <span className="text-sm text-gray-700 dark:text-gray-300">
           {skill.level}%
         </span>
       </div>

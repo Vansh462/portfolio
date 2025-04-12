@@ -34,7 +34,7 @@ const nodeTypes = {
       )}
       <div>
         <div className="text-sm font-medium">{data.label}</div>
-        <div className="text-xs text-gray-500 dark:text-gray-400">{data.category}</div>
+        <div className="text-xs text-gray-700 dark:text-gray-300">{data.category}</div>
       </div>
     </div>
   ),

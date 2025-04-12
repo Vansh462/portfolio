@@ -2,17 +2,17 @@
 
 // Hero section background patterns from https://www.svgbackgrounds.com/
 export const HERO_PATTERNS = {
-  circuit: 'https://ik.imagekit.io/vanshoberoi/portfolio/patterns/circuit-board.svg',
-  topography: 'https://ik.imagekit.io/vanshoberoi/portfolio/patterns/topography.svg',
-  bubbles: 'https://ik.imagekit.io/vanshoberoi/portfolio/patterns/bubbles.svg',
-  dots: 'https://ik.imagekit.io/vanshoberoi/portfolio/patterns/dots.svg',
+  circuit: '/patterns/circuit-board.svg',
+  topography: '/patterns/topography.svg',
+  bubbles: '/patterns/bubbles.svg',
+  dots: '/patterns/dots.svg',
 };
 
 // Section background patterns
 export const SECTION_PATTERNS = {
-  plus: 'https://ik.imagekit.io/vanshoberoi/portfolio/patterns/plus.svg',
-  diagonal: 'https://ik.imagekit.io/vanshoberoi/portfolio/patterns/diagonal-lines.svg',
-  grid: 'https://ik.imagekit.io/vanshoberoi/portfolio/patterns/grid.svg',
+  plus: '/patterns/plus.svg',
+  diagonal: '/patterns/diagonal-lines.svg',
+  grid: '/patterns/grid.svg',
 };
 
 // Tech stack logos from Simple Icons (https://simpleicons.org/)
@@ -66,7 +66,7 @@ export const SOCIAL_ICONS = {
 };
 
 // Profile image from public folder (not processed by bundler)
-export const PROFILE_IMAGE = '/profile.jpg';
+export const PROFILE_IMAGE = '/profile.webp';
 
 // Helper function to get a random pattern
 export const getRandomPattern = (patterns: Record<string, string>) => {

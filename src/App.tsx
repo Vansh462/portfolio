@@ -1,5 +1,6 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { trackPageView } from './utils/analytics';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import Layout from '@/components/layout/Layout';
 import PageTransition from '@/components/layout/PageTransition';
@@ -23,6 +24,11 @@ const PageLoader = () => (
 // AnimatePresence wrapper component
 const AnimatedRoutes = () => {
   const location = useLocation();
+
+  // Track page views when location changes
+  useEffect(() => {
+    trackPageView(location.pathname);
+  }, [location]);
 
   return (
     <AnimatePresence mode="wait">

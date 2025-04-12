@@ -5,7 +5,7 @@ const portfolioData: PortfolioData = {
     name: 'Vansh Oberoi',
     title: 'AI Engineer',
     summary: 'Passionate AI Engineer with expertise in Python, Machine Learning, and Web Technologies.',
-    image: '/profile.jpg',
+    image: '/profile.webp',
     contact: {
       address: '462 Model Town, Kapurthala, Punjab 144601',
       phone: '+91 9646570760',

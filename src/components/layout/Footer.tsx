@@ -51,7 +51,7 @@ export default function Footer() {
                 Vansh Oberoi
               </h3>
             </div>
-            <p className="text-dark-300/80 dark:text-light-300/80 mb-6">
+            <p className="text-dark-500 dark:text-light-200 mb-6">
               {personal.summary}
             </p>
             <div className="flex space-x-3">
@@ -131,7 +131,7 @@ export default function Footer() {
             </h3>
             <div className="flex flex-wrap gap-2">
               {portfolioData.technologies.slice(0, 8).map((tech, index) => (
-                <span key={index} className="px-3 py-1 text-xs font-medium bg-light-300 dark:bg-dark-200 text-dark-300 dark:text-light-300 rounded-full">
+                <span key={index} className="px-3 py-1 text-xs font-medium bg-light-300 dark:bg-dark-200 text-dark-600 dark:text-light-200 rounded-full">
                   {tech.name}
                 </span>
               ))}
@@ -189,11 +189,11 @@ export default function Footer() {
 
         <div className="border-t border-light-500/30 dark:border-dark-100/30 pt-8 text-center">
           <div className="flex flex-col md:flex-row items-center justify-between">
-            <p className="text-dark-300/70 dark:text-light-300/70 text-sm mb-4 md:mb-0">
+            <p className="text-dark-600 dark:text-light-200 text-sm mb-4 md:mb-0">
               © {currentYear} Vansh Oberoi. All rights reserved.
             </p>
             <div className="flex items-center">
-              <p className="text-dark-300/70 dark:text-light-300/70 text-sm flex items-center">
+              <p className="text-dark-600 dark:text-light-200 text-sm flex items-center">
                 Made with <Heart size={14} className="mx-1 text-red-500 animate-pulse" /> using
                 <span className="ml-1 text-primary-600 dark:text-primary-400 font-medium">React</span> &
                 <span className="ml-1 text-primary-600 dark:text-primary-400 font-medium">Vite</span>
