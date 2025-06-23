@@ -22,6 +22,8 @@ const DEFAULT_CACHE_TTL = 5 * 60 * 1000;
  * @param cacheTTL - Cache time-to-live in milliseconds
  * @returns Promise with the response data
  */
+const inflightRequests = new Map<string, Promise<any>>();
+
 export async function fetchWithCache<T>(
   url: string,
   options?: RequestInit,
@@ -36,23 +38,36 @@ export async function fetchWithCache<T>(
     return cachedResponse.data as T;
   }
   
-  // If not cached or expired, make the request
-  const response = await fetch(url, options);
-  
-  if (!response.ok) {
-    throw new Error(`HTTP error! Status: ${response.status}`);
+  // If a request is already in flight, return its promise
+  if (inflightRequests.has(cacheKey)) {
+    return inflightRequests.get(cacheKey) as Promise<T>;
   }
   
-  const data = await response.json();
-  
-  // Cache the response
-  responseCache.set(cacheKey, {
-    data,
-    timestamp: now,
-    expiresAt: now + cacheTTL
-  });
-  
-  return data as T;
+  // If not cached or expired, make the request
+  const fetchPromise = fetch(url, options)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Cache the response
+      responseCache.set(cacheKey, {
+        data,
+        timestamp: now,
+        expiresAt: now + cacheTTL
+      });
+      inflightRequests.delete(cacheKey);
+      return data as T;
+    })
+    .catch(err => {
+      inflightRequests.delete(cacheKey);
+      throw err;
+    });
+
+  inflightRequests.set(cacheKey, fetchPromise);
+  return fetchPromise;
 }
 
 // Batch request queue

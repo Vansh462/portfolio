@@ -12,17 +12,19 @@
  */
 export function preloadResources(resources: string[], type: 'image' | 'style' | 'script' | 'font'): void {
   if (typeof window === 'undefined') return;
-  
+
   resources.forEach(url => {
+    // Prevent duplicate preloads
+    if (document.querySelector(`link[rel="preload"][href="${url}"]`)) return;
     const link = document.createElement('link');
     link.rel = 'preload';
     link.href = url;
     link.as = type;
-    
+
     if (type === 'font') {
       link.setAttribute('crossorigin', 'anonymous');
     }
-    
+
     document.head.appendChild(link);
   });
 }
@@ -33,18 +35,22 @@ export function preloadResources(resources: string[], type: 'image' | 'style' | 
  */
 export function preconnectToDomains(domains: string[]): void {
   if (typeof window === 'undefined') return;
-  
+
   domains.forEach(domain => {
+    // Prevent duplicate preconnects
+    if (document.querySelector(`link[rel="preconnect"][href="${domain}"]`)) return;
     const link = document.createElement('link');
     link.rel = 'preconnect';
     link.href = domain;
     document.head.appendChild(link);
-    
+
     // Also add DNS prefetch as a fallback for browsers that don't support preconnect
-    const dnsLink = document.createElement('link');
-    dnsLink.rel = 'dns-prefetch';
-    dnsLink.href = domain;
-    document.head.appendChild(dnsLink);
+    if (!document.querySelector(`link[rel="dns-prefetch"][href="${domain}"]`)) {
+      const dnsLink = document.createElement('link');
+      dnsLink.rel = 'dns-prefetch';
+      dnsLink.href = domain;
+      document.head.appendChild(dnsLink);
+    }
   });
 }
 
@@ -117,7 +123,13 @@ export function initPerformanceOptimizations(): void {
   
   // Preload critical resources
   preloadResources([
-    '/profile.webp'
+    '/profile.webp',
+    'https://cdn.simpleicons.org/python/3776AB',
+    'https://cdn.simpleicons.org/tensorflow/FF6F00',
+    'https://cdn.simpleicons.org/scikitlearn/F7931E',
+    'https://static-00.iconduck.com/assets.00/aws-icon-2048x2048-274bm1xi.png',
+    'https://cdn.simpleicons.org/docker/2496ED',
+    'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg'
   ], 'image');
   
   // Monitor web vitals in development

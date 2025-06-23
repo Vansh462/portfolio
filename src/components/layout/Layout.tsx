@@ -2,7 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { useEffect, useState, Suspense, lazy } from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import { motion } from 'framer-motion';
+import GlobalAnimatedBackground from './GlobalAnimatedBackground';
 import KeyboardShortcutsDialog from '@/components/ui/KeyboardShortcutsDialog';
 import { trackEvent } from '@/utils/analytics';
 
@@ -41,27 +41,19 @@ export default function Layout() {
   }, [location.pathname]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900 relative">
+      {/* Global Animated Background */}
+      <GlobalAnimatedBackground />
+
       <Header />
-      <motion.main
-        className="flex-grow pt-20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.4 }}
-      >
+      <main className="flex-grow pt-20 relative z-10">
         {!isLoaded ? (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <ComponentLoader />
-          </motion.div>
+          <ComponentLoader />
         ) : (
           <Outlet />
         )}
 
-      </motion.main>
+      </main>
       <Footer onOpenShortcuts={() => setIsShortcutsOpen(true)} />
 
       {/* Keyboard Shortcuts Dialog */}

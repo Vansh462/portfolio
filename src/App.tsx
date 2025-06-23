@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { trackPageView, trackEvent } from './utils/analytics';
 import { ThemeProvider } from '@/components/ThemeProvider';
@@ -9,21 +9,16 @@ import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 import SearchDialog from '@/components/ui/SearchDialog';
 import KeyboardShortcutsDialog from '@/components/ui/KeyboardShortcutsDialog';
 
-// Lazy load pages for code splitting
-const HomePage = lazy(() => import('@/pages/HomePage'));
-const AboutPage = lazy(() => import('@/pages/AboutPage'));
-const ExperiencePage = lazy(() => import('@/pages/ExperiencePage'));
-const ProjectsPage = lazy(() => import('@/pages/ProjectsPage'));
-const ContactPage = lazy(() => import('@/pages/ContactPage'));
-const PrivacyPolicyPage = lazy(() => import('@/pages/PrivacyPolicyPage'));
-const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
+// Direct imports for instant navigation - no lazy loading delays
+import HomePage from '@/pages/HomePage';
+import AboutPage from '@/pages/AboutPage';
+import ExperiencePage from '@/pages/ExperiencePage';
+import ProjectsPage from '@/pages/ProjectsPage';
+import ContactPage from '@/pages/ContactPage';
+import PrivacyPolicyPage from '@/pages/PrivacyPolicyPage';
+import NotFoundPage from '@/pages/NotFoundPage';
 
-// Loading component
-const PageLoader = () => (
-  <div className="flex items-center justify-center min-h-screen">
-    <div className="w-16 h-16 border-4 border-primary-500 border-solid rounded-full border-t-transparent animate-spin"></div>
-  </div>
-);
+// No loading component needed - instant navigation
 
 // AnimatePresence wrapper component
 const AnimatedRoutes = () => {
@@ -61,19 +56,17 @@ const AnimatedRoutes = () => {
   return (
     <AnimatePresence mode="wait">
       <PageTransition key={location.pathname}>
-        <Suspense fallback={<PageLoader />}>
-          <Routes location={location}>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<HomePage />} />
-              <Route path="about" element={<AboutPage />} />
-              <Route path="experience" element={<ExperiencePage />} />
-              <Route path="projects" element={<ProjectsPage />} />
-              <Route path="contact" element={<ContactPage />} />
-              <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Route>
-          </Routes>
-        </Suspense>
+        <Routes location={location}>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="experience" element={<ExperiencePage />} />
+            <Route path="projects" element={<ProjectsPage />} />
+            <Route path="contact" element={<ContactPage />} />
+            <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
       </PageTransition>
 
       {/* Global Search Dialog */}

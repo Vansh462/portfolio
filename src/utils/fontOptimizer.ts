@@ -9,7 +9,10 @@
  */
 export function optimizeFontLoading(): void {
   if (typeof window === 'undefined') return;
-  
+
+  // Prevent duplicate script injection
+  if (document.querySelector('script[src*="webfont/1.6.26/webfont.js"]')) return;
+
   // Create a web font loader script
   const webFontScript = document.createElement('script');
   webFontScript.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';

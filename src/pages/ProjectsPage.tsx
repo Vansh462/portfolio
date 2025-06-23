@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Github } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ProjectCard from '@/components/ui/ProjectCard';
+import { LinkButton } from '@/components/ui/Button';
 import portfolioData from '@/data/portfolio';
+import { trackEvent } from '@/utils/analytics';
 
 export default function ProjectsPage() {
   const { projects } = portfolioData;
@@ -30,6 +33,23 @@ export default function ProjectsPage() {
             title="My Projects"
             subtitle="Explore the projects I've worked on."
           />
+
+          {/* Visit GitHub Button */}
+          <div className="flex justify-center mb-8">
+            <LinkButton
+              href="https://github.com/Vansh462"
+              variant="outline"
+              size="lg"
+              icon={<Github size={20} />}
+              iconPosition="left"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
+              onClick={() => trackEvent('Projects', 'Visit GitHub Click', 'Main Profile')}
+            >
+              Visit My GitHub
+            </LinkButton>
+          </div>
 
           {/* Filter buttons */}
           <div className="flex flex-wrap justify-center gap-3 mb-12">

@@ -7,8 +7,11 @@ import { HERO_PATTERNS, TECH_LOGOS, PROFILE_IMAGE } from '@/utils/assets';
 import { staggerContainer, fadeIn, float, pulse, textContainer, textLetter } from '@/utils/animations';
 import { BracketsCurly, Lightning, Database as PhDatabase, Code as PhCode } from '@phosphor-icons/react';
 
+
 export default function Hero() {
   const { personal } = portfolioData;
+
+
 
   // Animated text for the title
   const AnimatedText = ({ text }: { text: string }) => (
@@ -23,85 +26,7 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center py-20 overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5 dark:opacity-[0.02] z-0">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url(${HERO_PATTERNS.topography})`,
-            backgroundSize: '500px',
-          }}
-        ></div>
-      </div>
-
-      {/* Gradient Orbs */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-[30rem] h-[30rem] bg-primary-500/10 dark:bg-primary-500/5 rounded-full blur-[100px] animate-pulse-slow"></div>
-        <div className="absolute bottom-10 right-10 w-[35rem] h-[35rem] bg-secondary-500/10 dark:bg-secondary-500/5 rounded-full blur-[100px] animate-pulse-slow animation-delay-1000"></div>
-      </div>
-
-      {/* Floating Tech Icons */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{
-            y: [0, -15, 0],
-            x: [0, 10, 0],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 8,
-            ease: "easeInOut",
-          }}
-          className="absolute top-[15%] left-[15%] opacity-20 dark:opacity-10"
-        >
-          <PhCode weight="duotone" size={80} className="text-primary-500" />
-        </motion.div>
-
-        <motion.div
-          animate={{
-            y: [0, 20, 0],
-            x: [0, -10, 0],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 10,
-            ease: "easeInOut",
-          }}
-          className="absolute bottom-[20%] left-[25%] opacity-20 dark:opacity-10"
-        >
-          <PhDatabase weight="duotone" size={60} className="text-secondary-500" />
-        </motion.div>
-
-        <motion.div
-          animate={{
-            y: [0, -20, 0],
-            x: [0, -15, 0],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 9,
-            ease: "easeInOut",
-          }}
-          className="absolute top-[25%] right-[15%] opacity-20 dark:opacity-10"
-        >
-          <BracketsCurly weight="duotone" size={70} className="text-primary-600" />
-        </motion.div>
-
-        <motion.div
-          animate={{
-            y: [0, 15, 0],
-            x: [0, 10, 0],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 7,
-            ease: "easeInOut",
-          }}
-          className="absolute bottom-[30%] right-[20%] opacity-20 dark:opacity-10"
-        >
-          <Lightning weight="duotone" size={65} className="text-secondary-600" />
-        </motion.div>
-      </div>
+      {/* Content now sits on top of global animated background */}
 
       <div className="container mx-auto px-4 z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -253,12 +178,12 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
+        {/* Scroll indicator - Properly centered with container */}
         <motion.div
           variants={fadeIn('up', 1.2)}
           initial="hidden"
           animate="visible"
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20"
         >
           <span className="text-dark-300/60 dark:text-light-300/60 mb-2 text-sm">
             Scroll down

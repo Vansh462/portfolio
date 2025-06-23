@@ -51,6 +51,9 @@ export function prefetchRoute(route: string): void {
   });
 }
 
+// Add missing import for prefetchRoute
+import { prefetch } from './httpOptimizer';
+
 /**
  * Setup prefetching for all links on the page
  */
@@ -59,19 +62,20 @@ export function setupLinkPrefetching(): void {
   if (import.meta.env.DEV) {
     return;
   }
-  
+
   // Use event delegation for better performance
   document.addEventListener('mouseover', (e) => {
-    const target = e.target as HTMLElement;
-    
-    // Check if the target is a link
-    if (target.tagName === 'A') {
+    let target = e.target as HTMLElement | null;
+    // Traverse up to find the nearest anchor element
+    while (target && target.tagName !== 'A') {
+      target = target.parentElement;
+    }
+    if (target && target.tagName === 'A') {
       const link = target as HTMLAnchorElement;
       const href = link.getAttribute('href');
-      
       // Only prefetch internal links
       if (href && href.startsWith('/') && !href.startsWith('//')) {
-        prefetchRoute(href);
+        prefetch(href);
       }
     }
   });

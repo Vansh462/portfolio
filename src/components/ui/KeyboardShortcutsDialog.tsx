@@ -18,36 +18,6 @@ interface ShortcutGroup {
 
 const shortcutGroups: ShortcutGroup[] = [
   {
-    title: 'Navigation',
-    shortcuts: [
-      {
-        keys: ['Ctrl/⌘', 'H'],
-        description: 'Go to Home page',
-        icon: <Home size={16} />
-      },
-      {
-        keys: ['Ctrl/⌘', 'A'],
-        description: 'Go to About page',
-        icon: <User size={16} />
-      },
-      {
-        keys: ['Ctrl/⌘', 'E'],
-        description: 'Go to Experience page',
-        icon: <Briefcase size={16} />
-      },
-      {
-        keys: ['Ctrl/⌘', 'P'],
-        description: 'Go to Projects page',
-        icon: <Code size={16} />
-      },
-      {
-        keys: ['Ctrl/⌘', 'C'],
-        description: 'Go to Contact page',
-        icon: <Mail size={16} />
-      }
-    ]
-  },
-  {
     title: 'Search',
     shortcuts: [
       {

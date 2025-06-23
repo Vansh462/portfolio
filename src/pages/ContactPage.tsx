@@ -5,6 +5,7 @@ import { GithubLogo, LinkedinLogo, TwitterLogo, FacebookLogo, InstagramLogo } fr
 import SectionHeading from '@/components/ui/SectionHeading';
 import portfolioData from '@/data/portfolio';
 import { trackFormSubmission, trackEvent } from '@/utils/analytics';
+import { confettiEffects, shouldShowConfetti } from '@/utils/confetti';
 
 export default function ContactPage() {
   const { personal } = portfolioData;
@@ -52,6 +53,11 @@ export default function ContactPage() {
 
       // Track successful form submission
       trackFormSubmission('contact', true);
+
+      // Trigger confetti celebration
+      if (shouldShowConfetti()) {
+        confettiEffects.contactSuccess();
+      }
 
       // Reset success message after 5 seconds
       setTimeout(() => {
@@ -306,6 +312,25 @@ export default function ContactPage() {
                         </span>
                       )}
                     </button>
+
+                    {/* Confetti Demo Button */}
+                    <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (shouldShowConfetti()) {
+                            confettiEffects.contactSuccess();
+                          }
+                        }}
+                        className="btn btn-secondary w-full flex items-center justify-center"
+                      >
+                        <span className="text-2xl mr-2">🎉</span>
+                        Test Confetti Demo
+                      </button>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-2">
+                        Click to see the celebration effect when form is submitted
+                      </p>
+                    </div>
                   </div>
                 </form>
               </div>

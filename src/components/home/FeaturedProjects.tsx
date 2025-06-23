@@ -10,10 +10,17 @@ import portfolioData from '@/data/portfolio';
 import { PROJECT_IMAGES, SECTION_PATTERNS } from '@/utils/assets';
 import { fadeIn, staggerContainer } from '@/utils/animations';
 import { ArrowSquareOut, GithubLogo, Code as PhCode } from '@phosphor-icons/react';
+import { trackEvent } from '@/utils/analytics';
 
 export default function FeaturedProjects() {
   const { projects } = portfolioData;
-  const featuredProjects = projects.filter((project) => project.featured);
+
+  // Only show these 3 specific projects on home page
+  const homePageProjects = projects.filter((project) =>
+    project.title === 'Bombay House Price Prediction Site & Model' ||
+    project.title === 'Jute Pest Classification' ||
+    project.title === 'PromptWizard'
+  );
 
   // Function to get project image
   const getProjectImage = (project: typeof projects[0]) => {
@@ -70,9 +77,9 @@ export default function FeaturedProjects() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-100px' }}
-        className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
       >
-        {featuredProjects.map((project, index) => (
+        {homePageProjects.map((project, index) => (
           <motion.div
             key={project.title}
             variants={fadeIn('up', index * 0.1)}
@@ -83,7 +90,7 @@ export default function FeaturedProjects() {
               variant="default"
               hover={false}
             >
-              <div className="relative h-56 overflow-hidden">
+              <div className="relative h-40 overflow-hidden">
                 {/* Project image with overlay */}
                 <img
                   src={getProjectImage(project)}
@@ -98,54 +105,64 @@ export default function FeaturedProjects() {
                 </div>
 
                 {/* Project title overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="text-xl font-bold text-white mb-2 transform group-hover:translate-y-0 translate-y-2 transition-transform duration-300">
-                    {project.title}
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <h3 className="text-lg font-bold text-white mb-2 transform group-hover:translate-y-0 translate-y-2 transition-transform duration-300">
+                    {project.title.length > 30 ? `${project.title.substring(0, 30)}...` : project.title}
                   </h3>
-                  <div className="flex flex-wrap gap-2 transform group-hover:translate-y-0 translate-y-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    {project.technologies.slice(0, 3).map((tech, i) => (
+                  <div className="flex flex-wrap gap-1 transform group-hover:translate-y-0 translate-y-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    {project.technologies.slice(0, 2).map((tech, i) => (
                       <Badge key={i} variant="primary" size="sm" pill>
                         {tech.name}
                       </Badge>
                     ))}
-                    {project.technologies.length > 3 && (
+                    {project.technologies.length > 2 && (
                       <Badge variant="secondary" size="sm" pill>
-                        +{project.technologies.length - 3}
+                        +{project.technologies.length - 2}
                       </Badge>
                     )}
                   </div>
                 </div>
               </div>
 
-              <div className="p-6 flex flex-col flex-grow">
-                <p className="text-dark-300/80 dark:text-light-300/80 mb-6 flex-grow">
-                  {project.description.length > 150
-                    ? `${project.description.substring(0, 150)}...`
+              <div className="p-4 flex flex-col flex-grow">
+                <p className="text-dark-300/80 dark:text-light-300/80 mb-4 flex-grow text-sm">
+                  {project.description.length > 100
+                    ? `${project.description.substring(0, 100)}...`
                     : project.description}
                 </p>
 
-                <div className="flex space-x-3 mt-auto">
+                <div className="flex space-x-2 mt-auto relative z-10">
                   {project.github && (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      icon={<GithubLogo weight="duotone" size={18} />}
-                      iconPosition="left"
-                      className="hover:border-primary-500 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300"
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-secondary btn-sm relative z-10 pointer-events-auto text-xs"
+                      aria-label="View GitHub repository"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        console.log('GitHub button clicked:', project.github);
+                      }}
                     >
-                      View Code
-                    </Button>
+                      <GithubLogo weight="duotone" size={14} className="mr-1" />
+                      Code
+                    </a>
                   )}
                   {project.link && (
-                    <Button
-                      variant="primary"
-                      size="sm"
-                      icon={<ArrowSquareOut weight="bold" size={18} />}
-                      iconPosition="left"
-                      className="shadow-md hover:shadow-lg shadow-primary-500/10 hover:shadow-primary-500/20 transition-all duration-300"
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-primary btn-sm relative z-10 pointer-events-auto text-xs"
+                      aria-label="View live project"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        console.log('Demo button clicked:', project.link);
+                      }}
                     >
-                      Live Demo
-                    </Button>
+                      <ArrowSquareOut weight="bold" size={14} className="mr-1" />
+                      Demo
+                    </a>
                   )}
                 </div>
               </div>
@@ -169,6 +186,7 @@ export default function FeaturedProjects() {
           iconPosition="right"
           animate
           className="shadow-lg shadow-secondary-500/20 hover:shadow-xl hover:shadow-secondary-500/30 transition-all duration-300"
+          onClick={() => trackEvent('Navigation', 'View All Projects', 'Home Page')}
         >
           View All Projects
         </LinkButton>

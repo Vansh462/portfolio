@@ -3,42 +3,46 @@ import { Quote } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import { Section } from '@/components/ui/Section';
 
-// Sample testimonials data
+
+// Real testimonials from colleagues and supervisors
 const testimonials = [
   {
     id: 1,
-    content: "Vansh is an exceptional AI Engineer who delivered beyond our expectations. His expertise in machine learning and problem-solving abilities are truly impressive.",
-    author: "John Doe",
-    position: "CTO, TechStart Inc.",
-    avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+    content: "Brilliant student who led the team perfectly and delivered the Jute Pest project with remarkable results on his first attempt. Initially, I thought the team wouldn't meet the deadline as they started late when other teams had a month to prepare, but they had only 10 days. In those final 10 days, Vansh delivered exceptional results!",
+    author: "Nikhil",
+    position: "Working Professional, LearnFlu",
   },
   {
     id: 2,
-    content: "Working with Vansh was a pleasure. He understood our requirements perfectly and implemented an AI solution that significantly improved our business processes.",
-    author: "Jane Smith",
-    position: "Product Manager, DataFlow",
-    avatar: "https://randomuser.me/api/portraits/women/2.jpg",
+    content: "Demonstrates disciplined and time-managed work delivery with good technical skills and strong potential. Shows excellent problem-solving abilities and should continue developing a broader strategic perspective to see projects through to completion.",
+    author: "Harshraj",
+    position: "CEO, EMM",
   },
   {
     id: 3,
-    content: "Vansh's technical skills and attention to detail made our project a success. He's not only knowledgeable but also communicates complex concepts clearly.",
-    author: "Robert Johnson",
-    position: "Founder, AI Solutions",
-    avatar: "https://randomuser.me/api/portraits/men/3.jpg",
+    content: "I appreciate your thinking approach and the mentality you bring to challenges. Your problem-solving mindset and technical perspective make you someone I would definitely like to collaborate with in future projects.",
+    author: "Tarun",
+    position: "CEO",
   },
 ];
 
 export default function TestimonialsSection() {
+
   return (
     <Section id="testimonials" background="light">
       <SectionHeading
-        title="What People Say"
-        subtitle="Feedback from clients and colleagues I've worked with."
+        title="What Colleagues Say"
+        subtitle="Real feedback from team leads, CEOs, and supervisors I've worked with."
         centered
         badge="Testimonials"
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+      >
         {testimonials.map((testimonial, index) => (
           <motion.div
             key={testimonial.id}
@@ -54,29 +58,22 @@ export default function TestimonialsSection() {
             </div>
             
             {/* Content */}
-            <div className="mb-6 text-dark-300/80 dark:text-light-300/80 relative z-10">
+            <div className="mb-6 text-dark-300/80 dark:text-light-300/80 relative z-10 text-center italic">
               "{testimonial.content}"
             </div>
             
             {/* Author */}
-            <div className="flex items-center">
-              <img
-                src={testimonial.avatar}
-                alt={testimonial.author}
-                className="w-12 h-12 rounded-full mr-4 object-cover"
-              />
-              <div>
-                <h4 className="font-semibold text-dark-400 dark:text-light-100">
-                  {testimonial.author}
-                </h4>
-                <p className="text-sm text-dark-300/70 dark:text-light-300/70">
-                  {testimonial.position}
-                </p>
-              </div>
+            <div className="text-center">
+              <h4 className="font-semibold text-dark-400 dark:text-light-100 text-lg">
+                {testimonial.author}
+              </h4>
+              <p className="text-sm text-dark-300/70 dark:text-light-300/70 mt-1">
+                {testimonial.position}
+              </p>
             </div>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </Section>
   );
 }

@@ -33,6 +33,7 @@ export interface Project {
   technologies: Technology[];
   link?: string;
   github?: string;
+  kaggle?: string;
   featured?: boolean;
 }
 
@@ -42,6 +43,7 @@ export interface Education {
   location: string;
   startDate: string;
   endDate: string;
+  gpa?: string;
   description?: string;
 }
 

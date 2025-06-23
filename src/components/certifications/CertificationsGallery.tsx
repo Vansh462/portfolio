@@ -1,9 +1,7 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Card } from '@/components/ui/Card';
+import { motion } from 'framer-motion';
+import { ExternalLink, Calendar, Award, Eye, X } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
-import { Badge } from '@/components/ui/Badge';
-import { Calendar, Award, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // Define certification type
 interface Certification {
@@ -25,7 +23,7 @@ const certifications: Certification[] = [
     title: 'Python Programming Fundamentals',
     issuer: 'Coursera',
     date: 'June 2023',
-    image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80',
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
     link: 'https://www.coursera.org',
     skills: ['Python', 'Programming', 'Problem Solving'],
     description: 'Example certificate: Fundamentals of Python programming including data structures, algorithms, and object-oriented programming concepts.'
@@ -35,7 +33,7 @@ const certifications: Certification[] = [
     title: 'Web Development with HTML/CSS',
     issuer: 'freeCodeCamp',
     date: 'August 2023',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
+    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
     link: 'https://www.freecodecamp.org/',
     skills: ['HTML', 'CSS', 'Web Design'],
     description: 'Example certificate: Responsive web design principles and implementation using HTML5 and CSS3.'
@@ -45,7 +43,7 @@ const certifications: Certification[] = [
     title: 'Introduction to Machine Learning',
     issuer: 'Kaggle',
     date: 'October 2023',
-    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80',
+    image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
     link: 'https://www.kaggle.com/learn',
     skills: ['Machine Learning', 'Python', 'Data Analysis'],
     description: 'Example certificate: Fundamentals of machine learning algorithms and their implementation using Python libraries.'
@@ -55,160 +53,250 @@ const certifications: Certification[] = [
     title: 'Git and GitHub Basics',
     issuer: 'LinkedIn Learning',
     date: 'May 2023',
-    image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    image: 'https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
     link: 'https://www.linkedin.com/learning',
     skills: ['Git', 'GitHub', 'Version Control'],
     description: 'Example certificate: Version control fundamentals using Git and collaboration through GitHub.'
   },
+  {
+    id: 'cert-5',
+    title: 'AWS Cloud Practitioner',
+    issuer: 'Amazon Web Services',
+    date: 'December 2023',
+    image: 'https://images.unsplash.com/photo-1605745341112-85968b19335a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
+    link: 'https://aws.amazon.com/certification/',
+    skills: ['AWS', 'Cloud Computing', 'Infrastructure'],
+    description: 'Example certificate: Cloud computing fundamentals and AWS services overview for cloud practitioners.'
+  },
+  {
+    id: 'cert-6',
+    title: 'React Development',
+    issuer: 'Meta',
+    date: 'January 2024',
+    image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
+    link: 'https://www.coursera.org/professional-certificates/meta-front-end-developer',
+    skills: ['React', 'JavaScript', 'Frontend'],
+    description: 'Example certificate: Modern React development including hooks, state management, and component architecture.'
+  },
 ];
 
 const CertificationsGallery = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
 
-  const nextCertificate = () => {
-    setDirection(1);
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % certifications.length);
-  };
-
-  const prevCertificate = () => {
-    setDirection(-1);
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + certifications.length) % certifications.length);
-  };
-
-  const variants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
       opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
     },
-    exit: (direction: number) => ({
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0,
-    }),
   };
 
-  const currentCert = certifications[currentIndex];
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.3,
+      },
+    },
+  };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="w-full"
-    >
+    <div className="w-full">
       <SectionHeading
-        title="Certifications Gallery"
-        subtitle="Example of how your future certifications could be displayed"
-        description="This gallery demonstrates how your certifications and achievements can be showcased in an interactive format. You can replace these examples with your actual certifications as you earn them."
+        title="Certifications & Achievements"
+        subtitle="Professional certifications and learning milestones"
         centered
       />
 
-      <div className="mt-8 relative">
-        <div className="absolute top-1/2 left-4 z-10 transform -translate-y-1/2">
-          <button
-            onClick={prevCertificate}
-            className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-            aria-label="Previous certificate"
-          >
-            <ChevronLeft className="h-6 w-6 text-gray-700 dark:text-gray-300" />
-          </button>
-        </div>
-
-        <div className="absolute top-1/2 right-4 z-10 transform -translate-y-1/2">
-          <button
-            onClick={nextCertificate}
-            className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-            aria-label="Next certificate"
-          >
-            <ChevronRight className="h-6 w-6 text-gray-700 dark:text-gray-300" />
-          </button>
-        </div>
-
-        <div className="overflow-hidden">
-          <AnimatePresence initial={false} custom={direction}>
+      <motion.div
+        className="mt-12 max-w-7xl mx-auto"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {certifications.map((cert) => (
             <motion.div
-              key={currentCert.id}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="w-full"
+              key={cert.id}
+              variants={cardVariants}
+              className="group relative bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer"
+              onClick={() => setSelectedCert(cert)}
+              whileHover={{ y: -5 }}
             >
-              <Card className="overflow-hidden">
-                <div className="md:flex">
-                  <div className="md:w-1/2 h-64 md:h-auto relative">
-                    <img
-                      src={currentCert.image}
-                      alt={currentCert.title}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
-                      <div>
-                        <h3 className="text-xl font-bold text-white">{currentCert.title}</h3>
-                        <p className="text-white/80 flex items-center mt-2">
-                          <Award className="h-4 w-4 mr-2" />
-                          {currentCert.issuer}
-                        </p>
-                        <p className="text-white/80 flex items-center mt-1">
-                          <Calendar className="h-4 w-4 mr-2" />
-                          {currentCert.date}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+              {/* Certificate Image */}
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={cert.image}
+                  alt={cert.title}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-                  <div className="p-6 md:w-1/2">
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {currentCert.skills.map((skill) => (
-                        <Badge key={skill} variant="secondary">{skill}</Badge>
-                      ))}
-                    </div>
-
-                    <p className="text-gray-700 dark:text-gray-300 mb-6">
-                      {currentCert.description}
-                    </p>
-
-                    <a
-                      href={currentCert.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:underline"
-                    >
-                      View Certificate
-                      <ExternalLink className="h-4 w-4 ml-1" />
-                    </a>
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-primary-500/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="text-center text-white">
+                    <Eye className="w-8 h-8 mx-auto mb-2" />
+                    <p className="text-sm font-medium">View Details</p>
                   </div>
                 </div>
-              </Card>
-            </motion.div>
-          </AnimatePresence>
-        </div>
 
-        <div className="flex justify-center mt-6">
-          {certifications.map((cert, index) => (
-            <button
-              key={cert.id}
-              onClick={() => {
-                setDirection(index > currentIndex ? 1 : -1);
-                setCurrentIndex(index);
-              }}
-              className={`w-3 h-3 mx-1 rounded-full ${
-                index === currentIndex
-                  ? 'bg-primary-500'
-                  : 'bg-gray-300 dark:bg-gray-700'
-              }`}
-              aria-label={`Go to certificate ${index + 1}`}
-            />
+                {/* Date Badge */}
+                <div className="absolute top-3 right-3 bg-white/90 dark:bg-gray-800/90 px-2 py-1 rounded-full">
+                  <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{cert.date}</span>
+                </div>
+              </div>
+
+              {/* Certificate Info */}
+              <div className="p-6">
+                <div className="flex items-center mb-3">
+                  <Award className="w-5 h-5 text-primary-500 mr-2 flex-shrink-0" />
+                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400 truncate">
+                    {cert.issuer}
+                  </span>
+                </div>
+
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 line-clamp-2">
+                  {cert.title}
+                </h3>
+
+                {/* Skills Tags */}
+                <div className="flex flex-wrap gap-1 mb-4">
+                  {cert.skills.slice(0, 3).map((skill, index) => (
+                    <span
+                      key={index}
+                      className="px-2 py-1 text-xs font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                  {cert.skills.length > 3 && (
+                    <span className="px-2 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full">
+                      +{cert.skills.length - 3}
+                    </span>
+                  )}
+                </div>
+
+                {/* Action Button */}
+                <button className="w-full py-2 px-4 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-primary-100 dark:hover:bg-primary-900/30 hover:text-primary-700 dark:hover:text-primary-300 transition-colors text-sm font-medium">
+                  View Certificate
+                </button>
+              </div>
+            </motion.div>
           ))}
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+
+      {/* Modal for Certificate Details */}
+      {selectedCert && (
+        <motion.div
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setSelectedCert(null)}
+        >
+          <motion.div
+            className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="relative">
+              <img
+                src={selectedCert.image}
+                alt={selectedCert.title}
+                className="w-full h-64 object-cover rounded-t-2xl"
+              />
+              <button
+                onClick={() => setSelectedCert(null)}
+                className="absolute top-4 right-4 p-2 bg-white/90 dark:bg-gray-800/90 rounded-full hover:bg-white dark:hover:bg-gray-800 transition-colors"
+              >
+                <X className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-8">
+              <div className="flex items-center mb-4">
+                <Award className="w-6 h-6 text-primary-500 mr-3" />
+                <span className="text-lg font-medium text-gray-600 dark:text-gray-400">
+                  {selectedCert.issuer}
+                </span>
+              </div>
+
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                {selectedCert.title}
+              </h2>
+
+              <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                {selectedCert.description}
+              </p>
+
+              {/* Skills */}
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Skills Covered</h3>
+                <div className="flex flex-wrap gap-2">
+                  {selectedCert.skills.map((skill, index) => (
+                    <span
+                      key={index}
+                      className="px-3 py-1 text-sm font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Certificate Details */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div>
+                  <div className="flex items-center text-gray-600 dark:text-gray-400 mb-2">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    <span className="text-sm">Completion Date</span>
+                  </div>
+                  <p className="font-medium text-gray-900 dark:text-white">{selectedCert.date}</p>
+                </div>
+                <div>
+                  <div className="flex items-center text-gray-600 dark:text-gray-400 mb-2">
+                    <Award className="w-4 h-4 mr-2" />
+                    <span className="text-sm">Issuing Organization</span>
+                  </div>
+                  <p className="font-medium text-gray-900 dark:text-white">
+                    {selectedCert.issuer}
+                  </p>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href={selectedCert.link}
+                  className="flex-1 inline-flex items-center justify-center px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors font-medium"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ExternalLink className="w-5 h-5 mr-2" />
+                  View Certificate
+                </a>
+                <button
+                  onClick={() => setSelectedCert(null)}
+                  className="flex-1 px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors font-medium"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </div>
   );
 };
 

@@ -1,29 +1,16 @@
 import { motion } from 'framer-motion';
 import { FileText } from 'lucide-react';
-import { Suspense, lazy } from 'react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import { LinkButton } from '@/components/ui/Button';
 import portfolioData from '@/data/portfolio';
-
-// Lazy load the SkillsNetwork component
-const SkillsNetwork = lazy(() => import('@/components/skills/SkillsNetwork'));
-
-// Component loader with skeleton
-const ComponentLoader = () => (
-  <div className="py-20">
-    <div className="container mx-auto px-4">
-      <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-1/3 mb-6 animate-pulse"></div>
-      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-2/3 mb-10 animate-pulse"></div>
-      <div className="h-64 bg-gray-200 dark:bg-gray-700 rounded mb-6 animate-pulse"></div>
-    </div>
-  </div>
-);
+import CertificationsGallery from '@/components/certifications/CertificationsGallery';
 
 export default function AboutPage() {
   const { personal, education, leadership, technologies } = portfolioData;
 
   return (
     <div>
+      {/* Hero Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <SectionHeading title="About Me" />
@@ -107,6 +94,13 @@ export default function AboutPage() {
                 <p className="text-gray-600 dark:text-gray-400">
                   {edu.location}
                 </p>
+                {edu.gpa && (
+                  <div className="flex items-center mt-3">
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      GPA: {edu.gpa}
+                    </span>
+                  </div>
+                )}
                 {edu.description && (
                   <p className="text-gray-600 dark:text-gray-400 mt-4">
                     {edu.description}
@@ -121,7 +115,7 @@ export default function AboutPage() {
       {/* Leadership Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <SectionHeading title="Leadership & Extracurricular" />
+          <SectionHeading title="Professional & Volunteer Experience" />
           <div className="space-y-8">
             {leadership.map((item, index) => (
               <motion.div
@@ -152,41 +146,211 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Skills Network Visualization */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <Suspense fallback={<ComponentLoader />}>
-            <SkillsNetwork />
-          </Suspense>
-        </div>
-      </section>
-
       {/* Technologies Section */}
-      <section className="py-20">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <SectionHeading
             title="Technologies I Use"
             subtitle="I'm proficient with a wide range of technologies and tools."
             centered
           />
-          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
-            {technologies.map((tech, index) => (
+
+          {/* Technology Clusters with Rainbow Flows */}
+          <div className="relative max-w-6xl mx-auto mt-16">
+            {/* Background Rainbow Flows */}
+            <div className="absolute inset-0 pointer-events-none">
+              {/* AI/ML Cluster Flow */}
+              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 800 600">
+                <defs>
+                  <linearGradient id="rainbow1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#ff6b6b" stopOpacity="0.3" />
+                    <stop offset="25%" stopColor="#4ecdc4" stopOpacity="0.3" />
+                    <stop offset="50%" stopColor="#45b7d1" stopOpacity="0.3" />
+                    <stop offset="75%" stopColor="#96ceb4" stopOpacity="0.3" />
+                    <stop offset="100%" stopColor="#feca57" stopOpacity="0.3" />
+                  </linearGradient>
+                  <linearGradient id="rainbow2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#a8e6cf" stopOpacity="0.3" />
+                    <stop offset="33%" stopColor="#dda0dd" stopOpacity="0.3" />
+                    <stop offset="66%" stopColor="#98d8c8" stopOpacity="0.3" />
+                    <stop offset="100%" stopColor="#f7dc6f" stopOpacity="0.3" />
+                  </linearGradient>
+                  <linearGradient id="rainbow3" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#ff9ff3" stopOpacity="0.3" />
+                    <stop offset="50%" stopColor="#54a0ff" stopOpacity="0.3" />
+                    <stop offset="100%" stopColor="#5f27cd" stopOpacity="0.3" />
+                  </linearGradient>
+                </defs>
+
+                {/* AI/ML Cloud */}
+                <path d="M50 100 Q200 50 350 100 Q400 120 350 150 Q200 180 50 150 Q20 120 50 100"
+                      fill="url(#rainbow1)" stroke="url(#rainbow1)" strokeWidth="2" strokeDasharray="5,5" />
+
+                {/* Backend Cloud */}
+                <path d="M450 200 Q600 150 750 200 Q780 220 750 250 Q600 280 450 250 Q420 220 450 200"
+                      fill="url(#rainbow2)" stroke="url(#rainbow2)" strokeWidth="2" strokeDasharray="5,5" />
+
+                {/* Frontend Cloud */}
+                <path d="M100 350 Q250 300 400 350 Q430 370 400 400 Q250 430 100 400 Q70 370 100 350"
+                      fill="url(#rainbow3)" stroke="url(#rainbow3)" strokeWidth="2" strokeDasharray="5,5" />
+
+                {/* Cloud/DevOps Cloud */}
+                <path d="M500 450 Q650 400 800 450 Q830 470 800 500 Q650 530 500 500 Q470 470 500 450"
+                      fill="url(#rainbow1)" stroke="url(#rainbow1)" strokeWidth="2" strokeDasharray="5,5" />
+              </svg>
+            </div>
+
+            {/* Technology Clusters */}
+            <div className="relative z-10 space-y-16">
+
+              {/* AI/ML Cluster */}
               <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="px-6 py-3 bg-white dark:bg-gray-800 rounded-full shadow-sm hover:shadow-md transition-shadow"
+                transition={{ duration: 0.6 }}
               >
-                <span className="text-gray-800 dark:text-gray-200 font-medium">
-                  {tech.name}
-                </span>
+                <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-6">
+                  🧠 AI & Machine Learning
+                </h3>
+                <div className="flex flex-wrap justify-center gap-3 max-w-md mx-auto">
+                  {['Python', 'TensorFlow', 'OpenAI', 'Gemini', 'RAG Pipeline', 'LangChain'].map((tech, index) => (
+                    <motion.div
+                      key={tech}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className="px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 text-purple-700 dark:text-purple-300 rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 font-medium text-sm"
+                    >
+                      {tech}
+                    </motion.div>
+                  ))}
+                </div>
               </motion.div>
-            ))}
+
+              {/* Backend Cluster */}
+              <motion.div
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-6">
+                  ⚙️ Backend & APIs
+                </h3>
+                <div className="flex flex-wrap justify-center gap-3 max-w-md mx-auto">
+                  {['Django', 'REST APIs', 'FastAPI', 'PostgreSQL', 'MongoDB', 'Redis'].map((tech, index) => (
+                    <motion.div
+                      key={tech}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className="px-4 py-2 bg-gradient-to-r from-green-100 to-blue-100 dark:from-green-900/30 dark:to-blue-900/30 text-green-700 dark:text-green-300 rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 font-medium text-sm"
+                    >
+                      {tech}
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Frontend Cluster */}
+              <motion.div
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-6">
+                  🎨 Frontend & UI
+                </h3>
+                <div className="flex flex-wrap justify-center gap-3 max-w-md mx-auto">
+                  {['React', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'HTML5', 'CSS3'].map((tech, index) => (
+                    <motion.div
+                      key={tech}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className="px-4 py-2 bg-gradient-to-r from-orange-100 to-red-100 dark:from-orange-900/30 dark:to-red-900/30 text-orange-700 dark:text-orange-300 rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 font-medium text-sm"
+                    >
+                      {tech}
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Cloud & DevOps Cluster */}
+              <motion.div
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              >
+                <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-6">
+                  ☁️ Cloud & DevOps
+                </h3>
+                <div className="flex flex-wrap justify-center gap-3 max-w-md mx-auto">
+                  {['AWS', 'Docker', 'Git', 'GitHub', 'Vercel', 'Linux'].map((tech, index) => (
+                    <motion.div
+                      key={tech}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className="px-4 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 dark:from-cyan-900/30 dark:to-teal-900/30 text-cyan-700 dark:text-cyan-300 rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 font-medium text-sm"
+                    >
+                      {tech}
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Tools & Others */}
+              <motion.div
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+              >
+                <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-6">
+                  🛠️ Tools & Platforms
+                </h3>
+                <div className="flex flex-wrap justify-center gap-3 max-w-md mx-auto">
+                  {['VS Code', 'Jupyter', 'Postman', 'Figma', 'Streamlit', 'Kaggle'].map((tech, index) => (
+                    <motion.div
+                      key={tech}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className="px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 text-indigo-700 dark:text-indigo-300 rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 font-medium text-sm"
+                    >
+                      {tech}
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* Certifications Gallery Section */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <CertificationsGallery />
         </div>
       </section>
     </div>
   );
 }
+
+

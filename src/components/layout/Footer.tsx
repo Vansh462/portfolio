@@ -57,7 +57,7 @@ export default function Footer({ onOpenShortcuts }: FooterProps) {
               </h3>
             </div>
             <p className="text-dark-500 dark:text-light-200 mb-6">
-              {personal.summary}
+              AI Developer & Software Engineer specializing in Python, Machine Learning, Django REST APIs, and Cloud Technologies. Currently developing cutting-edge AI solutions with RAG implementation at EaseMyMed.
             </p>
             <div className="flex space-x-3">
               {personal.contact.socials.map((social) => (
@@ -135,9 +135,9 @@ export default function Footer({ onOpenShortcuts }: FooterProps) {
               <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full"></span>
             </h3>
             <div className="flex flex-wrap gap-2">
-              {portfolioData.technologies.slice(0, 8).map((tech, index) => (
+              {['Python', 'Django', 'RAG Pipeline', 'OpenAI', 'AWS', 'Docker', 'TensorFlow', 'React'].map((tech, index) => (
                 <span key={index} className="px-3 py-1 text-xs font-medium bg-light-300 dark:bg-dark-200 text-dark-600 dark:text-light-200 rounded-full">
-                  {tech.name}
+                  {tech}
                 </span>
               ))}
             </div>

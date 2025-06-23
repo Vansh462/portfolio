@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, BookOpen } from 'lucide-react';
 import { Project } from '@/types';
 import { trackEvent } from '@/utils/analytics';
 
@@ -43,7 +43,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             </span>
           ))}
         </div>
-        <div className="flex space-x-3">
+        <div className="flex flex-wrap gap-2">
           {project.github && (
             <a
               href={project.github}
@@ -55,6 +55,19 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             >
               <Github size={16} className="mr-2" />
               Code
+            </a>
+          )}
+          {project.kaggle && (
+            <a
+              href={project.kaggle}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline"
+              aria-label="View Kaggle notebook"
+              onClick={() => trackEvent('Project', 'Kaggle Click', project.title)}
+            >
+              <BookOpen size={16} className="mr-2" />
+              Kaggle
             </a>
           )}
           {project.link && (

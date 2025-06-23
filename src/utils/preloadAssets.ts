@@ -6,16 +6,16 @@
  */
 
 // List of critical images to preload
-const criticalImages = [
+const criticalImages: string[] = [
   // Add paths to critical images here
   '/assets/hero-bg.webp',
   '/profile.webp',
 ];
 
 // List of critical fonts to preload
-const criticalFonts = [
+const criticalFonts: string[] = [
   // Add paths to critical fonts here
-  'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+  'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap',
 ];
 
 /**
@@ -24,7 +24,7 @@ const criticalFonts = [
  */
 const preloadImage = (src: string): Promise<void> => {
   return new Promise((resolve, reject) => {
-    const img = new Image();
+    const img = new window.Image();
     img.onload = () => resolve();
     img.onerror = reject;
     img.src = src;

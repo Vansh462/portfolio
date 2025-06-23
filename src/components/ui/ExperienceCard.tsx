@@ -28,11 +28,16 @@ export default function ExperienceCard({
       </div>
 
       <div className="card p-6">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-            {experience.title} at {experience.company}
-          </h3>
-          <span className="text-sm font-medium text-gray-700 dark:text-gray-300 mt-1 md:mt-0">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+          <div className="flex-1">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
+              {experience.company}
+            </h3>
+            <h4 className="text-lg font-medium text-gray-700 dark:text-gray-300">
+              {experience.title}
+            </h4>
+          </div>
+          <span className="text-sm font-medium text-gray-500 dark:text-gray-400 mt-2 md:mt-0 md:ml-4">
             {experience.startDate} - {experience.endDate}
           </span>
         </div>

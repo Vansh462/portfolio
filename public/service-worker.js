@@ -112,18 +112,18 @@ self.addEventListener('fetch', event => {
         if (!response || response.status !== 200 || response.type !== 'basic') {
           return response;
         }
-        
         // Clone the response as it can only be consumed once
         const responseToCache = response.clone();
-        
         caches.open(RUNTIME_CACHE).then(cache => {
           cache.put(event.request, responseToCache);
         });
-        
         return response;
       });
-      
+      // Return cached response if available, otherwise wait for network
       return cachedResponse || fetchPromise;
+    })
+  );
+});
     })
   );
 });
