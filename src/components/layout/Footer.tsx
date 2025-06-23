@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Github, Linkedin, Twitter, Facebook, Instagram, Mail, Heart, Phone, MapPin, ArrowUp, Command } from 'lucide-react';
+import { Github, Linkedin, Twitter, Facebook, Instagram, Mail, Phone, MapPin, ArrowUp, Command, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 import portfolioData from '@/data/portfolio';
 import { trackEvent } from '@/utils/analytics';
@@ -25,7 +25,7 @@ export default function Footer({ onOpenShortcuts }: FooterProps) {
   };
 
   return (
-    <footer className="bg-gray-100 dark:bg-gray-800 pt-16 pb-8 relative">
+    <footer className="bg-gradient-to-br from-gray-900 to-gray-950 text-white pt-20 pb-8 relative">
       {/* Wave SVG */}
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-none transform translate-y-[-98%]">
         <svg className="relative block w-full h-[50px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -35,7 +35,7 @@ export default function Footer({ onOpenShortcuts }: FooterProps) {
       </div>
 
       {/* Scroll to top button */}
-      <div className="absolute top-0 right-8 transform -translate-y-1/2">
+      <div className="absolute top-0 right-8 transform -translate-y-1/2 z-50">
         <motion.button
           onClick={scrollToTop}
           whileHover={{ scale: 1.1 }}
@@ -48,25 +48,25 @@ export default function Footer({ onOpenShortcuts }: FooterProps) {
       </div>
 
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          <div>
-            <div className="flex items-center mb-4">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-center text-white font-bold text-xl mr-3">V</div>
-              <h3 className="text-xl font-bold text-dark-400 dark:text-light-100">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16">
+          <div className="md:col-span-5">
+            <div className="flex items-center mb-6">
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-center text-white font-bold text-2xl mr-4">V</div>
+              <h3 className="text-2xl font-bold text-white">
                 Vansh Oberoi
               </h3>
             </div>
-            <p className="text-dark-500 dark:text-light-200 mb-6">
+            <p className="text-gray-300 mb-6 text-lg leading-relaxed">
               AI Developer & Software Engineer specializing in Python, Machine Learning, Django REST APIs, and Cloud Technologies. Currently developing cutting-edge AI solutions with RAG implementation at EaseMyMed.
             </p>
-            <div className="flex space-x-3">
+            <div className="flex space-x-2 hover:space-x-6 transition-all duration-300">
               {personal.contact.socials.map((social) => (
                 <a
                   key={social.platform}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-light-300 dark:bg-dark-200 flex items-center justify-center text-dark-300 dark:text-light-300 hover:bg-primary-100 dark:hover:bg-primary-900/30 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                  className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary-600 flex items-center justify-center text-gray-300 hover:text-white transition-all duration-300 hover:scale-110"
                   aria-label={social.platform}
                 >
                   {socialIcons[social.icon as keyof typeof socialIcons]}
@@ -75,164 +75,119 @@ export default function Footer({ onOpenShortcuts }: FooterProps) {
             </div>
           </div>
 
-          <div>
-            <h3 className="text-lg font-semibold text-dark-400 dark:text-light-100 mb-6 relative inline-block">
+          <div className="md:col-span-3">
+            <h3 className="text-xl font-bold text-white mb-6 border-b border-gray-700 pb-2">
               Quick Links
-              <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full"></span>
             </h3>
             <ul className="space-y-3">
-              <li>
-                <Link
-                  to="/"
-                  className="text-dark-300/80 dark:text-light-300/80 hover:text-primary-600 dark:hover:text-primary-400 transition-colors flex items-center"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-2"></span>
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/about"
-                  className="text-dark-300/80 dark:text-light-300/80 hover:text-primary-600 dark:hover:text-primary-400 transition-colors flex items-center"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-2"></span>
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/experience"
-                  className="text-dark-300/80 dark:text-light-300/80 hover:text-primary-600 dark:hover:text-primary-400 transition-colors flex items-center"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-2"></span>
-                  Experience
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/projects"
-                  className="text-dark-300/80 dark:text-light-300/80 hover:text-primary-600 dark:hover:text-primary-400 transition-colors flex items-center"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-2"></span>
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/contact"
-                  className="text-dark-300/80 dark:text-light-300/80 hover:text-primary-600 dark:hover:text-primary-400 transition-colors flex items-center"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-2"></span>
-                  Contact
-                </Link>
-              </li>
+              {[
+                { name: 'Home', path: '/' },
+                { name: 'About', path: '/about' },
+                { name: 'Experience', path: '/experience' },
+                { name: 'Projects', path: '/projects' },
+                { name: 'Contact', path: '/contact' },
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.path}
+                    className="text-gray-300 hover:text-primary-400 transition-colors flex items-center group"
+                  >
+                    <span className="w-0 group-hover:w-2 h-0.5 bg-primary-500 mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-lg font-semibold text-dark-400 dark:text-light-100 mb-6 relative inline-block">
-              Technologies
-              <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full"></span>
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {['Python', 'Django', 'RAG Pipeline', 'OpenAI', 'AWS', 'Docker', 'TensorFlow', 'React'].map((tech, index) => (
-                <span key={index} className="px-3 py-1 text-xs font-medium bg-light-300 dark:bg-dark-200 text-dark-600 dark:text-light-200 rounded-full">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
 
-          <div>
-            <h3 className="text-lg font-semibold text-dark-400 dark:text-light-100 mb-6 relative inline-block">
+
+          <div className="md:col-span-4">
+            <h3 className="text-xl font-bold text-white mb-6 border-b border-gray-700 pb-2">
               Contact
-              <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full"></span>
             </h3>
             <ul className="space-y-4">
-              <li className="flex items-start">
-                <div className="w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-400 mr-3">
-                  <Mail size={16} />
+              <li className="flex items-center">
+                <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-primary-400 mr-4">
+                  <Mail size={18} />
                 </div>
                 <div>
-                  <p className="text-sm text-dark-300/60 dark:text-light-300/60 mb-1">Email</p>
+                  <p className="text-gray-400 text-sm">Email</p>
                   <a
                     href={`mailto:${personal.contact.email}`}
-                    className="text-dark-300 dark:text-light-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                    className="text-gray-200 hover:text-primary-400 transition-colors"
                   >
                     {personal.contact.email}
                   </a>
                 </div>
               </li>
-              <li className="flex items-start">
-                <div className="w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-400 mr-3">
-                  <Phone size={16} />
+              <li className="flex items-center">
+                <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-primary-400 mr-4">
+                  <Phone size={18} />
                 </div>
                 <div>
-                  <p className="text-sm text-dark-300/60 dark:text-light-300/60 mb-1">Phone</p>
+                  <p className="text-gray-400 text-sm">Phone</p>
                   <a
                     href={`tel:${personal.contact.phone}`}
-                    className="text-dark-300 dark:text-light-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                    className="text-gray-200 hover:text-primary-400 transition-colors"
                   >
                     {personal.contact.phone}
                   </a>
                 </div>
               </li>
-              <li className="flex items-start">
-                <div className="w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-400 mr-3">
-                  <MapPin size={16} />
+              <li className="flex items-center">
+                <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-primary-400 mr-4">
+                  <MapPin size={18} />
                 </div>
                 <div>
-                  <p className="text-sm text-dark-300/60 dark:text-light-300/60 mb-1">Location</p>
-                  <p className="text-dark-300 dark:text-light-300">
+                  <p className="text-gray-400 text-sm">Location</p>
+                  <a
+                    href="https://maps.app.goo.gl/jaBmqeRcnrBwa1T58"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-200 hover:text-primary-400 transition-colors"
+                  >
                     {personal.contact.address}
-                  </p>
+                  </a>
                 </div>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-light-500/30 dark:border-dark-100/30 pt-8 text-center">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="flex flex-col md:flex-row items-center">
-              <p className="text-dark-600 dark:text-light-200 text-sm mb-2 md:mb-0 md:mr-4">
-                © {currentYear} Vansh Oberoi. All rights reserved.
-              </p>
-              <div className="flex items-center space-x-4 mb-4 md:mb-0">
-                <Link
-                  to="/privacy-policy"
-                  className="text-dark-600 dark:text-light-200 text-sm hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-                >
-                  Privacy Policy
-                </Link>
-                <button
-                  onClick={() => (window as any).openCookieDialog?.() || document.getElementById('CookiebotDialogTrigger')?.click()}
-                  className="text-dark-600 dark:text-light-200 text-sm hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-                >
-                  Cookie Settings
-                </button>
-                <button
-                  onClick={() => {
-                    if (onOpenShortcuts) {
-                      onOpenShortcuts();
-                      trackEvent('UI', 'Open Shortcuts', 'Footer');
-                    }
-                  }}
-                  className="text-dark-600 dark:text-light-200 text-sm hover:text-primary-600 dark:hover:text-primary-400 transition-colors flex items-center"
-                  aria-label="Keyboard shortcuts"
-                >
-                  <Command size={14} className="mr-1" />
-                  Shortcuts
-                </button>
-              </div>
+        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between">
+          <div className="flex flex-col md:flex-row items-center mb-4 md:mb-0">
+            <p className="text-gray-400 text-sm mb-2 md:mb-0 md:mr-6">
+              © 2024-{currentYear} Vansh Oberoi. All rights reserved.
+            </p>
+            <div className="flex items-center space-x-6">
+              <Link
+                to="/privacy-policy"
+                className="text-gray-400 text-sm hover:text-primary-400 transition-colors"
+              >
+                Privacy Policy
+              </Link>
+              <button
+                onClick={() => {
+                  if (onOpenShortcuts) {
+                    onOpenShortcuts();
+                    trackEvent('UI', 'Open Shortcuts', 'Footer');
+                  }
+                }}
+                className="text-gray-400 text-sm hover:text-primary-400 transition-colors flex items-center"
+                aria-label="Keyboard shortcuts"
+              >
+                <Command size={14} className="mr-1" />
+                Shortcuts
+              </button>
             </div>
-            <div className="flex items-center">
-              <p className="text-dark-600 dark:text-light-200 text-sm flex items-center">
-                Made with <Heart size={14} className="mx-1 text-red-500 animate-pulse" /> using
-                <span className="ml-1 text-primary-600 dark:text-primary-400 font-medium">React</span> &
-                <span className="ml-1 text-primary-600 dark:text-primary-400 font-medium">Vite</span>
-              </p>
-            </div>
+          </div>
+          <div className="flex items-center">
+            <p className="text-gray-400 text-sm flex items-center">
+              Made with <span className="mx-1 text-red-500">❤</span> using
+              <span className="ml-1 text-primary-400 font-medium">React</span> &
+              <span className="ml-1 text-primary-400 font-medium">Vite</span>
+            </p>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { Brain, Code, Database, Cloud, Wrench, Zap, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SectionHeading from '@/components/ui/SectionHeading';
 import { Section } from '@/components/ui/Section';
+import ScatteredTechnologies from './ScatteredTechnologies';
 import portfolioData from '@/data/portfolio';
 import { SECTION_PATTERNS, TECH_LOGOS } from '@/utils/assets';
 import { fadeIn, staggerContainer } from '@/utils/animations';
@@ -104,24 +105,13 @@ export default function SkillsSection() {
 
 
   return (
-    <Section id="skills" background="light">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.02] z-0">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url(${SECTION_PATTERNS.plus})`,
-            backgroundSize: '30px',
-          }}
-        ></div>
-      </div>
-
-      {/* Animated Gradient Orbs */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 right-10 w-[25rem] h-[25rem] bg-blue-500/10 dark:bg-blue-500/5 rounded-full blur-[80px] animate-pulse-slow"></div>
-        <div className="absolute bottom-20 left-10 w-[30rem] h-[30rem] bg-purple-500/10 dark:bg-purple-500/5 rounded-full blur-[100px] animate-pulse-slow animation-delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[20rem] h-[20rem] bg-green-500/8 dark:bg-green-500/4 rounded-full blur-[60px] animate-pulse-slow animation-delay-2000"></div>
-      </div>
+    <Section 
+      id="skills" 
+      background="light"
+      backgroundVariant="primary"
+      backgroundIntensity="medium"
+      animatedBackground={true}
+    >
 
 
 
@@ -142,17 +132,16 @@ export default function SkillsSection() {
         className="max-w-5xl mx-auto"
       >
         {/* Category Filter Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
+        <div className="flex flex-wrap justify-center gap-2 mb-8 relative z-10">
           <button
-            onClick={() => {
-              console.log('All Skills clicked');
-              setSelectedCategory(null);
-            }}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${
+            onClick={() => setSelectedCategory(null)}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer hover:shadow-md active:scale-95 z-10 ${
               !selectedCategory
                 ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/25'
                 : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
             }`}
+            aria-pressed={!selectedCategory}
+            role="tab"
           >
             <Zap className="w-4 h-4 inline mr-2" />
             All Skills
@@ -162,15 +151,14 @@ export default function SkillsSection() {
             return (
               <button
                 key={category}
-                onClick={() => {
-                  console.log('Tab clicked:', category);
-                  setSelectedCategory(category);
-                }}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center hover:scale-105 cursor-pointer ${
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center hover:scale-105 active:scale-95 cursor-pointer hover:shadow-md z-10 ${
                   selectedCategory === category
                     ? `bg-gradient-to-r ${info.color} text-white shadow-lg`
-                    : `${info.bgColor} ${info.borderColor} border text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600`
+                    : `${info.bgColor} ${info.borderColor} border text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700`
                 }`}
+                aria-pressed={selectedCategory === category}
+                role="tab"
               >
                 {info.icon}
                 <span className="ml-2">{category}</span>

@@ -13,100 +13,65 @@ export default function PrivacyPolicyPage() {
           />
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
             className="prose prose-lg dark:prose-invert mx-auto mt-12"
           >
             <h2>Introduction</h2>
             <p>
-              This Privacy Policy explains how we collect, use, and protect your personal information
-              when you visit our portfolio website. We respect your privacy and are committed to
-              protecting your personal data.
+              This is my personal portfolio website. I've created this privacy policy to be transparent about the minimal data collection that occurs on this site.
             </p>
 
-            <h2>Information We Collect</h2>
-            <p>We may collect the following types of information:</p>
-            <ul>
-              <li>
-                <strong>Usage Data:</strong> Information about how you use our website, including
-                pages visited, time spent on pages, and navigation paths.
-              </li>
-              <li>
-                <strong>Device Information:</strong> Information about your device, browser type,
-                and operating system.
-              </li>
-              <li>
-                <strong>Contact Information:</strong> If you use our contact form, we collect your
-                name, email address, and any message content you provide.
-              </li>
-            </ul>
-
-            <h2>Analytics and Cookies</h2>
+            <h2>Analytics</h2>
             <p>
-              We use the following analytics tools to understand how visitors interact with our site:
+              This site uses the following analytics tools to help me understand how visitors interact with my portfolio:
             </p>
             <ul>
               <li>
-                <strong>Google Analytics:</strong> We use Google Analytics to collect anonymous
-                information about how visitors use our website. This helps us improve our site and
-                provide a better user experience. Google Analytics uses cookies to collect this
-                information.
+                <strong>Google Analytics:</strong> Tracks page views and basic visitor information anonymously.
               </li>
               <li>
-                <strong>Microsoft Clarity:</strong> We use Microsoft Clarity to collect anonymous
-                heatmaps and session recordings to understand how users interact with our website.
-                This helps us identify usability issues and improve the user experience.
+                <strong>Microsoft Clarity:</strong> Creates heatmaps showing where visitors click and interact with pages.
+              </li>
+              <li>
+                <strong>Vercel Analytics:</strong> Collects basic performance metrics and anonymous page view counts.
               </li>
             </ul>
 
-            <h2>Cookie Consent</h2>
+            <h2>What This Means For You</h2>
             <p>
-              We use Cookiebot to manage cookie consent on our website. When you first visit our
-              site, you'll be asked to consent to the use of cookies. You can change your preferences
-              at any time by clicking the "Cookie Settings" link in the footer.
+              The analytics tools on this site collect anonymous data about:
             </p>
-
-            <h2>How We Use Your Information</h2>
-            <p>We use the information we collect to:</p>
             <ul>
-              <li>Improve our website and user experience</li>
-              <li>Respond to your inquiries when you contact us</li>
-              <li>Analyze how visitors use our site to make improvements</li>
-              <li>Protect our website from security threats</li>
+              <li>Which pages you visit</li>
+              <li>How long you stay on each page</li>
+              <li>Which browser and device you're using</li>
+              <li>Where you click on the page</li>
+            </ul>
+            
+            <h2>Your Privacy</h2>
+            <p>
+              This site does not:
+            </p>
+            <ul>
+              <li>Collect personally identifiable information</li>
+              <li>Use cookies for advertising</li>
+              <li>Share your data with third parties (beyond the analytics providers)</li>
+              <li>Track you across other websites</li>
             </ul>
 
-            <h2>Data Sharing and Third Parties</h2>
+            <h2>Contact</h2>
             <p>
-              We do not sell or rent your personal information to third parties. We may share
-              anonymous, aggregated data with service providers who help us analyze website
-              performance and user behavior.
+              If you have any questions about this portfolio site, please reach out through the <a href="/contact">contact page</a>.
             </p>
-
-            <h2>Your Rights</h2>
-            <p>Depending on your location, you may have the following rights:</p>
-            <ul>
-              <li>The right to access your personal data</li>
-              <li>The right to correct inaccurate personal data</li>
-              <li>The right to request deletion of your personal data</li>
-              <li>The right to restrict or object to processing of your personal data</li>
-              <li>The right to data portability</li>
-            </ul>
-
-            <h2>Contact Us</h2>
-            <p>
-              If you have any questions about this Privacy Policy or how we handle your data, please
-              contact us through our <a href="/contact">contact form</a>.
-            </p>
-
-            <h2>Changes to This Policy</h2>
-            <p>
-              We may update this Privacy Policy from time to time. The latest version will always be
-              posted on this page with the effective date.
+            
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-8">
+              This privacy policy is intentionally simple because this is a personal portfolio site with minimal data collection.
             </p>
 
             <p className="text-sm text-gray-600 dark:text-gray-400 mt-8">
-              Last updated: {new Date().toLocaleDateString()}
+              Last updated: June 23, 2024
             </p>
           </motion.div>
         </div>

@@ -52,17 +52,12 @@ export default function FeaturedProjects() {
   };
 
   return (
-    <Section id="projects">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.02] z-0">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url(${SECTION_PATTERNS.diagonal})`,
-            backgroundSize: '30px',
-          }}
-        ></div>
-      </div>
+    <Section 
+      id="projects"
+      backgroundVariant="secondary"
+      backgroundIntensity="medium"
+      animatedBackground={true}
+    >
 
       <SectionHeading
         title="Featured Projects"

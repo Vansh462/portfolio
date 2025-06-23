@@ -1,13 +1,20 @@
+// React and third-party imports
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+
+// Hooks and utilities
 import { trackPageView, trackEvent } from './utils/analytics';
+import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
+
+// Components
 import { ThemeProvider } from '@/components/ThemeProvider';
 import Layout from '@/components/layout/Layout';
 import PageTransition from '@/components/layout/PageTransition';
-import { AnimatePresence } from 'framer-motion';
-import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 import SearchDialog from '@/components/ui/SearchDialog';
 import KeyboardShortcutsDialog from '@/components/ui/KeyboardShortcutsDialog';
+// Analytics components
+import { VercelAnalytics } from '@/components/VercelAnalytics';
 
 // Direct imports for instant navigation - no lazy loading delays
 import HomePage from '@/pages/HomePage';
@@ -88,6 +95,7 @@ function App() {
   return (
     <ThemeProvider defaultTheme="system">
       <BrowserRouter>
+        <VercelAnalytics />
         <AnimatedRoutes />
       </BrowserRouter>
     </ThemeProvider>

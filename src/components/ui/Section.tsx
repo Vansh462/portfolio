@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import SectionBackground from './SectionBackground';
 
 interface SectionProps {
   id?: string;
@@ -8,6 +9,9 @@ interface SectionProps {
   fullWidth?: boolean;
   animate?: boolean;
   background?: 'light' | 'dark' | 'primary' | 'gradient' | 'none';
+  backgroundVariant?: 'default' | 'primary' | 'secondary' | 'gradient';
+  backgroundIntensity?: 'low' | 'medium' | 'high';
+  animatedBackground?: boolean;
 }
 
 export const Section: React.FC<SectionProps> = ({
@@ -17,6 +21,9 @@ export const Section: React.FC<SectionProps> = ({
   fullWidth = false,
   animate = true,
   background = 'none',
+  backgroundVariant = 'default',
+  backgroundIntensity = 'medium',
+  animatedBackground = true,
 }) => {
   const getBackgroundClasses = () => {
     switch (background) {
@@ -53,11 +60,18 @@ export const Section: React.FC<SectionProps> = ({
         id={id}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-100px' }}
+        viewport={{ once: true, margin: '-200px' }}
         variants={sectionVariants}
-        className={`section py-16 md:py-24 ${getBackgroundClasses()} ${className}`}
+        className={`section py-16 md:py-24 ${getBackgroundClasses()} ${className} relative overflow-hidden`}
       >
-        <div className={containerClasses}>
+        {/* Animated background */}
+        <SectionBackground 
+          variant={backgroundVariant} 
+          intensity={backgroundIntensity} 
+          animated={animatedBackground} 
+        />
+        
+        <div className={`${containerClasses} relative z-10`}>
           {children}
         </div>
       </motion.section>
@@ -67,9 +81,16 @@ export const Section: React.FC<SectionProps> = ({
   return (
     <section
       id={id}
-      className={`section py-16 md:py-24 ${getBackgroundClasses()} ${className}`}
+      className={`section py-16 md:py-24 ${getBackgroundClasses()} ${className} relative overflow-hidden`}
     >
-      <div className={containerClasses}>
+      {/* Static background */}
+      <SectionBackground 
+        variant={backgroundVariant} 
+        intensity={backgroundIntensity} 
+        animated={animatedBackground} 
+      />
+      
+      <div className={`${containerClasses} relative z-10`}>
         {children}
       </div>
     </section>

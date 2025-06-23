@@ -1,15 +1,23 @@
-// Animation variants for Framer Motion
-// These are reusable animation configurations that can be applied to components
+/**
+ * Animation variants for Framer Motion
+ * These are reusable animation configurations that can be applied to components
+ */
 
-// Fade in animation
-export const fadeIn = (direction: 'up' | 'down' | 'left' | 'right' | 'none' = 'up', delay: number = 0) => {
-  let x = 0;
-  let y = 0;
+// Animation direction type
+type AnimationDirection = 'up' | 'down' | 'left' | 'right' | 'none';
+
+/**
+ * Fade in animation with optional direction
+ * @param direction - Direction of the animation ('up', 'down', 'left', 'right', 'none')
+ * @param delay - Delay before animation starts (in seconds)
+ */
+export const fadeIn = (direction: AnimationDirection = 'up', delay: number = 0) => {
+  // Calculate offset based on direction
+  const offset = 40; // Standard offset distance
   
-  if (direction === 'up') y = 40;
-  if (direction === 'down') y = -40;
-  if (direction === 'left') x = 40;
-  if (direction === 'right') x = -40;
+  // Set x and y based on direction
+  const x = direction === 'left' ? offset : direction === 'right' ? -offset : 0;
+  const y = direction === 'up' ? offset : direction === 'down' ? -offset : 0;
   
   return {
     hidden: {
@@ -30,18 +38,20 @@ export const fadeIn = (direction: 'up' | 'down' | 'left' | 'right' | 'none' = 'u
   };
 };
 
-// Staggered container animation
-export const staggerContainer = (staggerChildren: number = 0.1, delayChildren: number = 0) => {
-  return {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren,
-        delayChildren,
-      },
+/**
+ * Staggered container animation for child elements
+ * @param staggerChildren - Delay between each child animation (in seconds)
+ * @param delayChildren - Initial delay before any children start animating (in seconds)
+ */
+export const staggerContainer = (staggerChildren: number = 0.1, delayChildren: number = 0) => ({
+  hidden: {}, // Empty initial state
+  visible: {
+    transition: {
+      staggerChildren,
+      delayChildren,
     },
-  };
-};
+  },
+});
 
 // Scale animation
 export const scaleIn = (delay: number = 0) => {
@@ -102,27 +112,27 @@ export const textVariant = (delay: number = 0) => {
   };
 };
 
-// Text container for letter animations
+// Text container for letter animations - balanced timing
 export const textContainer = {
   hidden: {
     opacity: 0,
   },
   visible: (i = 1) => ({
     opacity: 1,
-    transition: { staggerChildren: 0.03, delayChildren: i * 0.1 },
+    transition: { staggerChildren: 0.05, delayChildren: i * 0.1 },
   }),
 };
 
-// Letter animation for text
+// Letter animation for text - balanced timing
 export const textLetter = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 15 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      type: 'spring',
-      damping: 12,
-      stiffness: 100,
+      type: 'tween',
+      duration: 0.25,
+      ease: 'easeOut',
     },
   },
 };

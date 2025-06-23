@@ -118,4 +118,20 @@
   .animate-delay-1000 {
     animation-delay: 1000ms;
   }
+
+  .animate-tilt {
+    animation: tilt 10s infinite linear;
+  }
+
+  @keyframes tilt {
+    0%, 50%, 100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(1deg);
+    }
+    75% {
+      transform: rotate(-1deg);
+    }
+  }
 }

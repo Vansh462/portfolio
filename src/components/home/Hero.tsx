@@ -1,28 +1,48 @@
-import { motion } from 'framer-motion';
-import { ArrowDown, Download, ArrowRight, Code, Brain, Database } from 'lucide-react';
+// React and third-party imports
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
+// Icon imports
+import { ArrowDown, Download, ArrowRight, Code, Brain, Database } from 'lucide-react';
+import { BracketsCurly, Lightning, Database as PhDatabase, Code as PhCode } from '@phosphor-icons/react';
+
+// Local component imports
 import { Button, LinkButton } from '@/components/ui/Button';
+
+// Data and utility imports
 import portfolioData from '@/data/portfolio';
 import { HERO_PATTERNS, TECH_LOGOS, PROFILE_IMAGE } from '@/utils/assets';
 import { staggerContainer, fadeIn, float, pulse, textContainer, textLetter } from '@/utils/animations';
-import { BracketsCurly, Lightning, Database as PhDatabase, Code as PhCode } from '@phosphor-icons/react';
 
+
+// Animated text component for letter-by-letter animation
+interface AnimatedTextProps {
+  text: string;
+}
+
+const AnimatedText = ({ text }: AnimatedTextProps) => (
+  <motion.span 
+    variants={textContainer} 
+    initial="hidden" 
+    animate="visible" 
+    className="inline-block"
+    transition={{ staggerChildren: 0.05 }}
+  >
+    {Array.from(text).map((letter, index) => (
+      <motion.span 
+        key={index} 
+        variants={textLetter} 
+        className="inline-block"
+        transition={{ duration: 0.25 }}
+      >
+        {letter === ' ' ? '\u00A0' : letter}
+      </motion.span>
+    ))}
+  </motion.span>
+);
 
 export default function Hero() {
   const { personal } = portfolioData;
-
-
-
-  // Animated text for the title
-  const AnimatedText = ({ text }: { text: string }) => (
-    <motion.span variants={textContainer} initial="hidden" animate="visible" className="inline-block">
-      {Array.from(text).map((letter, index) => (
-        <motion.span key={index} variants={textLetter} className="inline-block">
-          {letter === ' ' ? '\u00A0' : letter}
-        </motion.span>
-      ))}
-    </motion.span>
-  );
 
   return (
     <section className="relative min-h-[90vh] flex items-center py-20 overflow-hidden">

@@ -29,7 +29,13 @@ const testimonials = [
 export default function TestimonialsSection() {
 
   return (
-    <Section id="testimonials" background="light">
+    <Section 
+      id="testimonials" 
+      background="light"
+      backgroundVariant="gradient"
+      backgroundIntensity="low"
+      animatedBackground={true}
+    >
       <SectionHeading
         title="What Colleagues Say"
         subtitle="Real feedback from team leads, CEOs, and supervisors I've worked with."

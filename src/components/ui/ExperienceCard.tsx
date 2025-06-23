@@ -14,10 +14,9 @@ export default function ExperienceCard({
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="relative pl-8 pb-12 last:pb-0"
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: Math.min(index * 0.05, 0.15) }}
+      className="relative pl-8 pb-12 last:pb-0 last:mb-0"
     >
       {/* Timeline line */}
       <div className="absolute left-0 top-0 bottom-0 w-px bg-gray-200 dark:bg-gray-800"></div>

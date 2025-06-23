@@ -116,7 +116,7 @@ export default function AboutPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <SectionHeading title="Professional & Volunteer Experience" />
-          <div className="space-y-8">
+          <div className="space-y-4">
             {leadership.map((item, index) => (
               <motion.div
                 key={index}
@@ -124,7 +124,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="card p-6"
+                className="card px-6 py-3 max-w-5xl mx-auto"
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white">
@@ -157,59 +157,63 @@ export default function AboutPage() {
 
           {/* Technology Clusters with Rainbow Flows */}
           <div className="relative max-w-6xl mx-auto mt-16">
-            {/* Background Rainbow Flows */}
-            <div className="absolute inset-0 pointer-events-none">
-              {/* AI/ML Cluster Flow */}
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 800 600">
+            {/* Enhanced Background Clouds */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1000 500">
                 <defs>
-                  <linearGradient id="rainbow1" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#ff6b6b" stopOpacity="0.3" />
-                    <stop offset="25%" stopColor="#4ecdc4" stopOpacity="0.3" />
-                    <stop offset="50%" stopColor="#45b7d1" stopOpacity="0.3" />
-                    <stop offset="75%" stopColor="#96ceb4" stopOpacity="0.3" />
-                    <stop offset="100%" stopColor="#feca57" stopOpacity="0.3" />
+                  <filter id="blur1"><feGaussianBlur stdDeviation="3"/></filter>
+                  <filter id="blur2"><feGaussianBlur stdDeviation="6"/></filter>
+                  <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#a855f7" stopOpacity="0.15" />
+                    <stop offset="100%" stopColor="#ec4899" stopOpacity="0.1" />
                   </linearGradient>
-                  <linearGradient id="rainbow2" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#a8e6cf" stopOpacity="0.3" />
-                    <stop offset="33%" stopColor="#dda0dd" stopOpacity="0.3" />
-                    <stop offset="66%" stopColor="#98d8c8" stopOpacity="0.3" />
-                    <stop offset="100%" stopColor="#f7dc6f" stopOpacity="0.3" />
+                  <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#10b981" stopOpacity="0.12" />
+                    <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.08" />
                   </linearGradient>
-                  <linearGradient id="rainbow3" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#ff9ff3" stopOpacity="0.3" />
-                    <stop offset="50%" stopColor="#54a0ff" stopOpacity="0.3" />
-                    <stop offset="100%" stopColor="#5f27cd" stopOpacity="0.3" />
+                  <linearGradient id="g3" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.1" />
+                    <stop offset="100%" stopColor="#ef4444" stopOpacity="0.15" />
+                  </linearGradient>
+                  <linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.08" />
+                    <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.12" />
                   </linearGradient>
                 </defs>
 
-                {/* AI/ML Cloud */}
-                <path d="M50 100 Q200 50 350 100 Q400 120 350 150 Q200 180 50 150 Q20 120 50 100"
-                      fill="url(#rainbow1)" stroke="url(#rainbow1)" strokeWidth="2" strokeDasharray="5,5" />
-
-                {/* Backend Cloud */}
-                <path d="M450 200 Q600 150 750 200 Q780 220 750 250 Q600 280 450 250 Q420 220 450 200"
-                      fill="url(#rainbow2)" stroke="url(#rainbow2)" strokeWidth="2" strokeDasharray="5,5" />
-
-                {/* Frontend Cloud */}
-                <path d="M100 350 Q250 300 400 350 Q430 370 400 400 Q250 430 100 400 Q70 370 100 350"
-                      fill="url(#rainbow3)" stroke="url(#rainbow3)" strokeWidth="2" strokeDasharray="5,5" />
-
-                {/* Cloud/DevOps Cloud */}
-                <path d="M500 450 Q650 400 800 450 Q830 470 800 500 Q650 530 500 500 Q470 470 500 450"
-                      fill="url(#rainbow1)" stroke="url(#rainbow1)" strokeWidth="2" strokeDasharray="5,5" />
+                {/* Large overlapping cloud behind AI/ML */}
+                <ellipse cx="200" cy="120" rx="180" ry="80" fill="url(#g1)" filter="url(#blur2)" />
+                
+                {/* Medium cloud behind Backend */}
+                <ellipse cx="750" cy="100" rx="120" ry="60" fill="url(#g2)" filter="url(#blur1)" />
+                
+                {/* Large blurred cloud behind Frontend */}
+                <ellipse cx="150" cy="380" rx="200" ry="90" fill="url(#g3)" filter="url(#blur2)" opacity="0.6" />
+                
+                {/* Medium cloud behind DevOps */}
+                <ellipse cx="700" cy="400" rx="140" ry="70" fill="url(#g4)" filter="url(#blur1)" />
+                
+                {/* Small accent cloud behind Tools */}
+                <ellipse cx="500" cy="250" rx="100" ry="50" fill="url(#g1)" opacity="0.4" />
+                
+                {/* Overlapping background clouds */}
+                <ellipse cx="400" cy="150" rx="160" ry="40" fill="url(#g2)" filter="url(#blur2)" opacity="0.3" />
+                <ellipse cx="600" cy="300" rx="180" ry="45" fill="url(#g3)" filter="url(#blur2)" opacity="0.25" />
               </svg>
             </div>
 
-            {/* Technology Clusters */}
-            <div className="relative z-10 space-y-16">
+            {/* Technology Clusters - Scattered Layout with macOS Dock Effect */}
+            <div className="relative z-10 h-[500px] group">
 
               {/* AI/ML Cluster */}
               <motion.div
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="absolute text-center tech-cluster"
+                style={{ left: '10%', top: '20%', transform: 'translate(-50%, -50%)' }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
+                whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
               >
                 <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-6">
                   🧠 AI & Machine Learning
@@ -232,11 +236,13 @@ export default function AboutPage() {
 
               {/* Backend Cluster */}
               <motion.div
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="absolute text-center tech-cluster"
+                style={{ left: '60%', top: '15%', transform: 'translate(-50%, -50%)' }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
+                whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
               >
                 <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-6">
                   ⚙️ Backend & APIs
@@ -257,13 +263,44 @@ export default function AboutPage() {
                 </div>
               </motion.div>
 
-              {/* Frontend Cluster */}
+              {/* Tools & Others - Center */}
               <motion.div
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="absolute text-center tech-cluster"
+                style={{ left: '35%', top: '45%', transform: 'translate(-50%, -50%)' }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}
+                whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
+              >
+                <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-6">
+                  🛠️ Tools & Platforms
+                </h3>
+                <div className="flex flex-wrap justify-center gap-3 max-w-md mx-auto">
+                  {['VS Code', 'Jupyter', 'Postman', 'Figma', 'Streamlit', 'Kaggle'].map((tech, index) => (
+                    <motion.div
+                      key={tech}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className="px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 text-indigo-700 dark:text-indigo-300 rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 font-medium text-sm"
+                    >
+                      {tech}
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Frontend Cluster */}
+              <motion.div
+                className="absolute text-center tech-cluster"
+                style={{ left: '5%', top: '70%', transform: 'translate(-50%, -50%)' }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
               >
                 <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-6">
                   🎨 Frontend & UI
@@ -286,11 +323,13 @@ export default function AboutPage() {
 
               {/* Cloud & DevOps Cluster */}
               <motion.div
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="absolute text-center tech-cluster"
+                style={{ left: '60%', top: '75%', transform: 'translate(-50%, -50%)' }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.6 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
               >
                 <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-6">
                   ☁️ Cloud & DevOps
@@ -304,33 +343,6 @@ export default function AboutPage() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
                       className="px-4 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 dark:from-cyan-900/30 dark:to-teal-900/30 text-cyan-700 dark:text-cyan-300 rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 font-medium text-sm"
-                    >
-                      {tech}
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* Tools & Others */}
-              <motion.div
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-              >
-                <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-6">
-                  🛠️ Tools & Platforms
-                </h3>
-                <div className="flex flex-wrap justify-center gap-3 max-w-md mx-auto">
-                  {['VS Code', 'Jupyter', 'Postman', 'Figma', 'Streamlit', 'Kaggle'].map((tech, index) => (
-                    <motion.div
-                      key={tech}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 text-indigo-700 dark:text-indigo-300 rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 font-medium text-sm"
                     >
                       {tech}
                     </motion.div>

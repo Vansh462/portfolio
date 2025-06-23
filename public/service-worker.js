@@ -1,48 +1,41 @@
-/**
- * Service Worker for Portfolio Website
- * 
- * This service worker provides caching and offline support.
- */
-
-// Cache names
+// Service Worker for Portfolio Site
 const CACHE_NAME = 'portfolio-cache-v1';
-const RUNTIME_CACHE = 'runtime-cache';
 
-// Resources to cache immediately on install
-const PRECACHE_RESOURCES = [
+// Assets to cache on install
+const PRECACHE_ASSETS = [
   '/',
   '/index.html',
-  '/manifest.json',
-  '/favicon.ico',
   '/profile.webp',
-  '/assets/non-critical.css',
-  '/patterns/topography.svg'
+  '/patterns/topography.svg',
+  '/patterns/plus.svg',
+  '/patterns/diagonal.svg'
 ];
 
-// Install event - precache static assets
+// Install event - precache assets
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(PRECACHE_RESOURCES))
+      .then(cache => cache.addAll(PRECACHE_ASSETS))
       .then(() => self.skipWaiting())
   );
 });
 
 // Activate event - clean up old caches
 self.addEventListener('activate', event => {
-  const currentCaches = [CACHE_NAME, RUNTIME_CACHE];
   event.waitUntil(
     caches.keys().then(cacheNames => {
-      return cacheNames.filter(cacheName => !currentCaches.includes(cacheName));
-    }).then(cachesToDelete => {
-      return Promise.all(cachesToDelete.map(cacheToDelete => {
-        return caches.delete(cacheToDelete);
-      }));
+      return Promise.all(
+        cacheNames.filter(cacheName => {
+          return cacheName !== CACHE_NAME;
+        }).map(cacheName => {
+          return caches.delete(cacheName);
+        })
+      );
     }).then(() => self.clients.claim())
   );
 });
 
-// Fetch event - serve from cache or network
+// Fetch event - network first with cache fallback strategy
 self.addEventListener('fetch', event => {
   // Skip cross-origin requests
   if (!event.request.url.startsWith(self.location.origin)) {
@@ -54,30 +47,29 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Skip analytics requests
-  if (event.request.url.includes('google-analytics.com') || 
-      event.request.url.includes('clarity.ms')) {
-    return;
-  }
-
-  // For HTML requests - use network-first strategy
-  if (event.request.headers.get('accept').includes('text/html')) {
+  // For HTML requests - network first, then cache
+  if (event.request.headers.get('accept')?.includes('text/html')) {
     event.respondWith(
-      fetch(event.request).catch(() => {
-        return caches.match(event.request).then(cachedResponse => {
-          if (cachedResponse) {
-            return cachedResponse;
-          }
-          // If no cached HTML, return the offline page
-          return caches.match('/');
-        });
-      })
+      fetch(event.request)
+        .then(response => {
+          const responseClone = response.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, responseClone);
+          });
+          return response;
+        })
+        .catch(() => {
+          return caches.match(event.request);
+        })
     );
     return;
   }
 
-  // For image requests - use cache-first strategy
-  if (event.request.destination === 'image') {
+  // For images and other assets - cache first, then network
+  if (
+    event.request.url.match(/\.(jpe?g|png|gif|svg|webp|avif|css|js)$/) ||
+    event.request.url.includes('/assets/')
+  ) {
     event.respondWith(
       caches.match(event.request).then(cachedResponse => {
         if (cachedResponse) {
@@ -85,15 +77,13 @@ self.addEventListener('fetch', event => {
         }
         
         return fetch(event.request).then(response => {
-          // Don't cache non-successful responses
+          // Don't cache errors
           if (!response || response.status !== 200 || response.type !== 'basic') {
             return response;
           }
           
-          // Clone the response as it can only be consumed once
           const responseToCache = response.clone();
-          
-          caches.open(RUNTIME_CACHE).then(cache => {
+          caches.open(CACHE_NAME).then(cache => {
             cache.put(event.request, responseToCache);
           });
           
@@ -103,27 +93,12 @@ self.addEventListener('fetch', event => {
     );
     return;
   }
-
-  // For other requests - use stale-while-revalidate strategy
+  
+  // Default strategy - network with cache fallback
   event.respondWith(
-    caches.match(event.request).then(cachedResponse => {
-      const fetchPromise = fetch(event.request).then(response => {
-        // Don't cache non-successful responses
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          return response;
-        }
-        // Clone the response as it can only be consumed once
-        const responseToCache = response.clone();
-        caches.open(RUNTIME_CACHE).then(cache => {
-          cache.put(event.request, responseToCache);
-        });
-        return response;
-      });
-      // Return cached response if available, otherwise wait for network
-      return cachedResponse || fetchPromise;
-    })
-  );
-});
-    })
+    fetch(event.request)
+      .catch(() => {
+        return caches.match(event.request);
+      })
   );
 });

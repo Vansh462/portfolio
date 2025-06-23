@@ -10,7 +10,7 @@ export default function GlobalAnimatedBackground() {
   ];
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0">
+    <div className="fixed inset-0 pointer-events-none z-0 min-h-[200vh] overflow-visible">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5 dark:opacity-[0.02]">
         <div

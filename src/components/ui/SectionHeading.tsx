@@ -35,42 +35,41 @@ export default function SectionHeading({
 
   return (
     <div className={`mb-16 ${centered ? 'text-center' : ''} ${className}`}>
-      {badge && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+      <div className="space-y-6">
+        {badge && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+            className="mb-4"
+          >
+            <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300">
+              {badge}
+            </span>
+          </motion.div>
+        )}
+
+        <motion.h2
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
-          className="mb-4"
+          className="text-3xl md:text-4xl font-bold text-dark-400 dark:text-light-100 mb-6 relative inline-block"
         >
-          <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300">
-            {badge}
-          </span>
-        </motion.div>
-      )}
+          {renderTitle()}
+          <span className="absolute -bottom-3 left-0 w-1/3 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full"></span>
+        </motion.h2>
 
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-3xl md:text-4xl font-bold text-dark-400 dark:text-light-100 mb-6 relative inline-block"
-      >
-        {renderTitle()}
-        <span className="absolute -bottom-3 left-0 w-1/3 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full"></span>
-      </motion.h2>
-
-      {subtitle && (
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className={`text-lg text-dark-300/80 dark:text-light-300/80 ${centered ? 'mx-auto' : ''} max-w-3xl`}
-        >
-          {subtitle}
-        </motion.p>
-      )}
+        {subtitle && (
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            className={`text-lg text-dark-300/80 dark:text-light-300/80 ${centered ? 'mx-auto' : ''} max-w-3xl`}
+          >
+            {subtitle}
+          </motion.p>
+        )}
+      </div>
     </div>
   );
 }

@@ -409,7 +409,7 @@ const portfolioData: PortfolioData = {
       description: 'Found and Joined various online communities to market the Corizo group. Noted that groups made for marketing often don\'t yield results due to constant spamming, but groups targeting different topics like Sports, fitness, Cooking Classes, Founders office, etc yield more responsive results for digital marketing.',
     },
     {
-      title: 'Volunteered for 7 day charity drive Intern',
+      title: 'Volunteered for 7 day charity drive',
       organization: 'Hamari Pahchan NGO',
       date: 'June 2023',
       description: 'Fund raising, raising awareness, digital promotions. NGO provides education and skill development to underprivileged and offer internships for students.',

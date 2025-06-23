@@ -36,14 +36,22 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom', 'react-router-dom'],
-          animations: ['framer-motion', 'gsap'],
+          animations: ['framer-motion'],
           ui: ['@headlessui/react', 'lucide-react', '@phosphor-icons/react'],
         },
+        // Optimize asset loading
+        assetFileNames: 'assets/[name].[hash].[ext]',
+        chunkFileNames: 'assets/[name].[hash].js',
+        entryFileNames: 'assets/[name].[hash].js',
       },
     },
     // Faster builds
     target: 'esnext',
     cssCodeSplit: true,
+    // Reduce bundle size
+    assetsInlineLimit: 4096, // 4kb
+    // Improve compression
+    reportCompressedSize: false,
   },
   // Optimize dependencies
   optimizeDeps: {

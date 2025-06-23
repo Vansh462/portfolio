@@ -2,27 +2,56 @@
 
 ![Portfolio Preview](https://raw.githubusercontent.com/Vansh462/portfolio/main/public/portfolio-screenshot.png)
 
-A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS to showcase my skills, projects, and experience as an AI Engineer. This portfolio features interactive visualizations, performance optimizations, and a clean, professional design.
 
-### Live Demo
+This project implements a modern web application architecture with advanced features like route prefetching, intelligent resource loading, and progressive web app capabilities. It uses a component-based architecture with performance optimization at its core, including code splitting, lazy loading, and optimized asset delivery.
+
+The application includes sophisticated animations, keyboard shortcuts, global search functionality, and a comprehensive theme system. It's built with accessibility in mind and includes analytics integration, cookie consent management, and performance monitoring.
+
+## Live Demo
 [View Live Demo](https://portfolio-vansh-oberois-projects.vercel.app/) - Deployed on Vercel
 
-## 👨‍💻 About Me
 
-I'm an AI Engineer with expertise in Python, Machine Learning, and Web Technologies. Currently pursuing my Bachelor of Technology in Computer Science & Engineering at Guru Nanak Dev University. I have experience working with GenAI platforms like OpenAI and Gemini 2.0, and I've built various ML models and AI solutions.
+## Repository Structure
+```
+.
+├── src/                      # Source code directory
+│   ├── components/          # React components organized by feature
+│   │   ├── home/           # Home page components (Hero, CTA, etc.)
+│   │   ├── layout/         # Layout components (Header, Footer, etc.)
+│   │   └── ui/             # Reusable UI components
+│   ├── utils/              # Utility functions for performance, HTTP, etc.
+│   ├── hooks/              # Custom React hooks
+│   ├── pages/              # Page components
+│   └── types/              # TypeScript type definitions
+├── public/                  # Static assets and public files
+├── scripts/                # Build and optimization scripts
+└── docs/                   # Documentation files
+```
 
-## 🚀 Features
+## Usage Instructions
+### Prerequisites
+- Node.js (v14.0.0 or higher)
+- npm (v6.0.0 or higher)
+- Modern web browser with JavaScript enabled
 
-- **Modern React Architecture** - Built with React 18, TypeScript, and Vite
-- **Responsive Design** - Fully responsive on all devices
-- **Dark/Light Mode** - Theme toggle with system preference detection
-- **Interactive UI Components** - Custom UI components with animations and tooltips
-- **Interactive Skills Visualization** - Network graph showing relationships between skills (NEW!)
-- **Certifications Gallery** - Interactive gallery to showcase certifications (NEW!)
-- **Performance Optimized** - Code splitting, lazy loading, and optimized assets (NEW!)
-- **Functional Contact Form** - Integrated with Formspree for easy contact (NEW!)
-- **SEO Friendly** - Proper metadata and semantic HTML
+### Installation
+```bash
+# Clone the repository
+git clone <repository-url>
+cd <repository-name>
 
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
 ## 🛠️ Technologies Used
 
 ### Frontend
@@ -45,81 +74,129 @@ I'm an AI Engineer with expertise in Python, Machine Learning, and Web Technolog
 - **ESLint** - Code linting
 - **PostCSS** - CSS processing
 
-## 📋 Project Structure
+## 🚀 Features
 
+- **Modern React Architecture** - Built with React 18, TypeScript, and Vite
+- **Advanced Performance Optimization** - Code splitting, lazy loading, and optimized assets
+- **Interactive UI Components** - Custom animations and transitions using Framer Motion
+- **Interactive Skills Visualization** - Network graph showing relationships between skills
+- **Dark/Light Mode** - Theme toggle with system preference detection
+- **Certifications Gallery** - Interactive gallery to showcase certifications
+- **Global Search** - Quick navigation with keyboard shortcuts
+- **Responsive Design** - Fully responsive on all devices
+- **SEO Friendly** - Proper metadata and semantic HTML
+- **Analytics Integration** - Performance monitoring and user behavior tracking
+
+## Quick Start
+1. Configure your portfolio data:
+```typescript
+// src/data/portfolio.ts
+export const portfolioData = {
+  personal: {
+    name: "Your Name",
+    title: "Your Title",
+    // ...other personal info
+  },
+  // ...other portfolio sections
+};
 ```
-/
-  /public            # Static assets and files
-  /src               # Source code
-    /assets          # Project assets
-      /images        # Image assets
-    /components      # Reusable UI components
-      /ui            # Basic UI components
-      /layout        # Layout components
-      /home          # Home page components
-      /skills        # Skills visualization
-      /certifications # Certifications gallery
-    /data            # Portfolio data
-    /hooks           # Custom React hooks
-    /pages           # Page components
-    /types           # TypeScript type definitions
-    /utils           # Utility functions
-  /dist              # Production build output
-```
 
-## 🚀 Getting Started
+2. Add your assets:
+- Place images in `public/` directory
+- Update image references in `src/utils/assets.ts`
 
-### Prerequisites
-- Node.js (v16+)
-- npm or yarn
-
-### Installation
-
+3. Start the development server:
 ```bash
-# Clone the repository
-git clone https://github.com/Vansh462/portfolio.git
-
-# Navigate to the project directory
-cd portfolio
-
-# Install dependencies
-npm install
-
-# Start the development server
 npm run dev
 ```
 
-## 🌐 Deployment
+## More Detailed Examples
+1. Adding a new page:
+```typescript
+// src/pages/NewPage.tsx
+import { motion } from 'framer-motion';
+import { Section } from '@/components/ui/Section';
 
-This site is optimized for deployment on Vercel, but can also be deployed to Netlify or GitHub Pages.
-
-### Vercel Deployment (Recommended)
-
-1. Push your code to GitHub
-2. Go to [Vercel](https://vercel.com) and sign up/login with your GitHub account
-3. Click "New Project" and import your repository
-4. Vercel will automatically detect the correct settings
-5. Click "Deploy"
-
-### Manual Build
-
-```bash
-# Build for production
-npm run build
-
-# The build output will be in the dist/ folder
+export default function NewPage() {
+  return (
+    <Section>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
+        {/* Your content here */}
+      </motion.div>
+    </Section>
+  );
+}
 ```
 
-## 📝 License
+2. Using the theme system:
+```typescript
+import { useTheme } from '@/components/ThemeProvider';
 
-This project is open source and available under the MIT License.
+function MyComponent() {
+  const { theme, setTheme } = useTheme();
+  
+  return (
+    <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+      Toggle Theme
+    </button>
+  );
+}
+```
+
+## Troubleshooting
+1. Build Issues
+- Error: "Module not found"
+  ```bash
+  # Clear node_modules and reinstall
+  rm -rf node_modules
+  npm install
+  ```
+
+2. Performance Issues
+- Enable debug mode in development:
+  ```typescript
+  // src/utils/performanceOptimizer.ts
+  const DEBUG = true;
+  ```
+- Check browser console for Core Web Vitals metrics
+
+3. Animation Issues
+- Check Framer Motion debug output:
+  ```typescript
+  import { motion, useIsomorphicLayoutEffect } from 'framer-motion';
+  motion.useDebugValue = true;
+  ```
+
+## Data Flow
+The application follows a unidirectional data flow pattern, with portfolio data as the single source of truth.
+
+```ascii
+[Portfolio Data] → [React Components] → [UI Rendering]
+         ↓                  ↓                ↓
+    [Data Layer]    [Component Layer]   [View Layer]
+         ↓                  ↓                ↓
+  [Type System]    [Props/State Flow]   [Animations]
+```
+
+Key component interactions:
+1. Portfolio data is loaded and typed using TypeScript interfaces
+2. Components receive data through props
+3. Theme provider manages global theme state
+4. Page transitions are handled by AnimatePresence
+5. Performance optimizations are applied automatically
+6. Analytics events are tracked through utility functions
+7. Resource loading is optimized via prefetching and lazy loading
 
 ## 📞 Contact
 
-Vansh Oberoi - [learnsolo462@gmail.com](mailto:learnsolo462@gmail.com)
+Vansh Oberoi
+- Email: [learnsolo462@gmail.com](mailto:learnsolo462@gmail.com)
+- LinkedIn: [linkedin.com/in/Vansh462](https://www.linkedin.com/in/vansh-oberoi-62baa6178/)
+- GitHub: [github.com/Vansh462](https://github.com/Vansh462/)
+- Instagram: [@vanshoberoi3103](https://www.instagram.com/vanshoberoi3103)
 
-LinkedIn: [linkedin.com/in/Vansh462](https://www.linkedin.com/in/vansh-oberoi-62baa6178/?trk=opento_sprofile_details)
-
-GitHub: [github.com/Vansh462](https://github.com/Vansh462/)
-
-Instagram: [@vanshoberoi3103](https://www.instagram.com/vanshoberoi3103?igsh=YWxhbW9zMWJqeXBy)
+## 📝 License
+This project is open source and available under the MIT License. But all data is owned by Vansh Oberoi

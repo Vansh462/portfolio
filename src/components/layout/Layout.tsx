@@ -1,42 +1,29 @@
+// React and third-party imports
+import { useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import { useEffect, useState, Suspense, lazy } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+// Components
 import Header from './Header';
 import Footer from './Footer';
 import GlobalAnimatedBackground from './GlobalAnimatedBackground';
 import KeyboardShortcutsDialog from '@/components/ui/KeyboardShortcutsDialog';
-import { trackEvent } from '@/utils/analytics';
 
-// Lazy load new feature components
-const SkillsNetwork = lazy(() => import('@/components/skills/SkillsNetwork'));
-const CertificationsGallery = lazy(() => import('@/components/certifications/CertificationsGallery'));
-
-// Component loader with skeleton
-const ComponentLoader = () => (
-  <div className="py-20">
-    <div className="container mx-auto px-4">
-      <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-1/3 mb-6 animate-pulse"></div>
-      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-2/3 mb-10 animate-pulse"></div>
-      <div className="h-64 bg-gray-200 dark:bg-gray-700 rounded mb-6 animate-pulse"></div>
-    </div>
-  </div>
-);
 
 export default function Layout() {
   const location = useLocation();
-  const [isLoaded, setIsLoaded] = useState(false);
   const [isShortcutsOpen, setIsShortcutsOpen] = useState(false);
-
-  // Scroll to top on route change
+  const [isRouteChanging, setIsRouteChanging] = useState(false);
+  
+  // Handle route changes
   useEffect(() => {
+    // Scroll to top
     window.scrollTo(0, 0);
-  }, [location.pathname]);
-
-  // Simulate page load to demonstrate performance optimization
-  useEffect(() => {
-    setIsLoaded(false);
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 300);
+    
+    // Set route changing state for animation
+    setIsRouteChanging(true);
+    const timer = setTimeout(() => setIsRouteChanging(false), 50);
+    
     return () => clearTimeout(timer);
   }, [location.pathname]);
 
@@ -47,12 +34,17 @@ export default function Layout() {
 
       <Header />
       <main className="flex-grow pt-20 relative z-10">
-        {!isLoaded ? (
-          <ComponentLoader />
-        ) : (
-          <Outlet />
-        )}
-
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Outlet />
+          </motion.div>
+        </AnimatePresence>
       </main>
       <Footer onOpenShortcuts={() => setIsShortcutsOpen(true)} />
 

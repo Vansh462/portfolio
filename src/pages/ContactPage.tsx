@@ -74,8 +74,8 @@ export default function ContactPage() {
   };
 
   return (
-    <div>
-      <section id="contact-section" className="py-20">
+    <div className="min-h-screen">
+      <section id="contact-section" className="py-20 pb-32">
         <div className="container mx-auto px-4">
           <SectionHeading
             title="Contact Me"
@@ -137,9 +137,14 @@ export default function ContactPage() {
                     <h4 className="text-lg font-medium text-gray-900 dark:text-white">
                       Address
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-400">
+                    <a
+                      href="https://maps.app.goo.gl/jaBmqeRcnrBwa1T58"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                    >
                       {personal.contact.address}
-                    </p>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -148,7 +153,7 @@ export default function ContactPage() {
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                   Connect With Me
                 </h3>
-                <div className="flex space-x-4">
+                <div className="flex space-x-2 hover:space-x-6 transition-all duration-300">
                   {personal.contact.socials.map((social) => {
                     // Map social platform to icon component
                     let SocialIcon;
@@ -178,15 +183,15 @@ export default function ContactPage() {
                         href={social.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-gray-100 dark:bg-gray-800 p-3 rounded-full hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-colors group relative"
+                        className="bg-gray-100 dark:bg-gray-800 p-3 rounded-full hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-all duration-300 group relative hover:scale-110"
                         aria-label={social.platform}
                         onClick={() => trackEvent('Social', 'Click', social.platform)}
                       >
                         <span className="sr-only">{social.platform}</span>
                         {SocialIcon ? (
-                          <SocialIcon className="h-6 w-6 text-primary-600 dark:text-primary-400" />
+                          <SocialIcon className="h-6 w-6 text-primary-600 dark:text-primary-400 transition-transform duration-300 group-hover:scale-110" />
                         ) : (
-                          <div className="h-6 w-6 text-primary-600 dark:text-primary-400 flex items-center justify-center">
+                          <div className="h-6 w-6 text-primary-600 dark:text-primary-400 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                             {social.platform.charAt(0)}
                           </div>
                         )}
@@ -202,16 +207,19 @@ export default function ContactPage() {
               </div>
             </motion.div>
 
-            {/* Contact Form */}
+            {/* Contact Form - Magic Card */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <div className="card p-8">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                  Send Me a Message
-                </h3>
+              <div className="relative group">
+                {/* Magic Card with Glassmorphism */}
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-600 via-secondary-600 to-primary-600 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                <div className="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/50 rounded-2xl p-8 shadow-2xl">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                    Send Me a Message
+                  </h3>
 
                 {submitSuccess ? (
                   <div className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 p-4 rounded-md mb-6">
@@ -312,27 +320,9 @@ export default function ContactPage() {
                         </span>
                       )}
                     </button>
-
-                    {/* Confetti Demo Button */}
-                    <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-                      <button
-                        type="button"
-                        onClick={() => {
-                          if (shouldShowConfetti()) {
-                            confettiEffects.contactSuccess();
-                          }
-                        }}
-                        className="btn btn-secondary w-full flex items-center justify-center"
-                      >
-                        <span className="text-2xl mr-2">🎉</span>
-                        Test Confetti Demo
-                      </button>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-2">
-                        Click to see the celebration effect when form is submitted
-                      </p>
-                    </div>
                   </div>
                 </form>
+                </div>
               </div>
             </motion.div>
           </div>
