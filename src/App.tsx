@@ -1,7 +1,6 @@
 // React and third-party imports
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
 
 // Hooks and utilities
 import { trackPageView, trackEvent } from './utils/analytics';
@@ -10,7 +9,6 @@ import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 // Components
 import { ThemeProvider } from '@/components/ThemeProvider';
 import Layout from '@/components/layout/Layout';
-import PageTransition from '@/components/layout/PageTransition';
 import SearchDialog from '@/components/ui/SearchDialog';
 import KeyboardShortcutsDialog from '@/components/ui/KeyboardShortcutsDialog';
 // Analytics components
@@ -25,10 +23,8 @@ import ContactPage from '@/pages/ContactPage';
 import PrivacyPolicyPage from '@/pages/PrivacyPolicyPage';
 import NotFoundPage from '@/pages/NotFoundPage';
 
-// No loading component needed - instant navigation
-
-// AnimatePresence wrapper component
-const AnimatedRoutes = () => {
+// Router component with global state
+const AppRouter = () => {
   const location = useLocation();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isShortcutsOpen, setIsShortcutsOpen] = useState(false);
@@ -61,20 +57,18 @@ const AnimatedRoutes = () => {
   }, []);
 
   return (
-    <AnimatePresence mode="wait">
-      <PageTransition key={location.pathname}>
-        <Routes location={location}>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage />} />
-            <Route path="about" element={<AboutPage />} />
-            <Route path="experience" element={<ExperiencePage />} />
-            <Route path="projects" element={<ProjectsPage />} />
-            <Route path="contact" element={<ContactPage />} />
-            <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
-      </PageTransition>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="experience" element={<ExperiencePage />} />
+          <Route path="projects" element={<ProjectsPage />} />
+          <Route path="contact" element={<ContactPage />} />
+          <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
 
       {/* Global Search Dialog */}
       <SearchDialog
@@ -87,7 +81,7 @@ const AnimatedRoutes = () => {
         isOpen={isShortcutsOpen}
         onClose={() => setIsShortcutsOpen(false)}
       />
-    </AnimatePresence>
+    </>
   );
 };
 
@@ -96,7 +90,7 @@ function App() {
     <ThemeProvider defaultTheme="system">
       <BrowserRouter>
         <VercelAnalytics />
-        <AnimatedRoutes />
+        <AppRouter />
       </BrowserRouter>
     </ThemeProvider>
   );

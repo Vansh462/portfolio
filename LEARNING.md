@@ -308,3 +308,48 @@ src/
 ├── utils/            # Utility functions
 └── pages/            # Page components
 ```
+
+## 16. SPA Routing in Production
+
+**Problem:** Navigation works in development but fails in production - URL changes but wrong pages display.
+
+**Cause:** Missing SPA fallback configuration. Static servers try to find physical files for routes like `/about/index.html` which don't exist.
+
+**Solution:** Configure server to fallback to `index.html` for all routes, allowing React Router to handle client-side routing.
+
+```typescript
+// ❌ Incorrect - Missing SPA fallback in vite.config.ts
+export default defineConfig({
+  server: {
+    port: 3000,
+  },
+  // No historyApiFallback configuration
+});
+
+// ✅ Correct - With SPA fallback
+export default defineConfig({
+  server: {
+    port: 3000,
+    historyApiFallback: true, // Dev server
+  },
+  preview: {
+    historyApiFallback: true, // Preview server
+  },
+});
+```
+
+**Additional deployment configs needed:**
+
+```bash
+# _redirects (Netlify)
+/*    /index.html   200
+```
+
+```json
+// vercel.json (Vercel)
+{
+  "rewrites": [
+    {"source": "/(.*)", "destination": "/index.html"}
+  ]
+}
+```

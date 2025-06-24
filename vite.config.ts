@@ -26,6 +26,8 @@ export default defineConfig({
     watch: {
       usePolling: false,
     },
+    // SPA fallback for dev server
+    historyApiFallback: true,
   },
   build: {
     outDir: 'dist',
@@ -52,6 +54,12 @@ export default defineConfig({
     assetsInlineLimit: 4096, // 4kb
     // Improve compression
     reportCompressedSize: false,
+  },
+  // SPA fallback for client-side routing
+  preview: {
+    port: 3000,
+    // This ensures all routes fallback to index.html for SPA routing
+    historyApiFallback: true,
   },
   // Optimize dependencies
   optimizeDeps: {
