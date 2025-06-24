@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vanshoberoi.vercel.app/sitemap.xml
+Sitemap: https://vanshoberoi.com/sitemap.xml

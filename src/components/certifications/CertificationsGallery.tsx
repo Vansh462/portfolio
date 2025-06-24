@@ -15,68 +15,67 @@ interface Certification {
   description: string;
 }
 
-// Sample certifications data - replace with your actual certifications when you have them
-// These are just examples to demonstrate the gallery functionality
+// Real certifications and achievements based on portfolio data
 const certifications: Certification[] = [
   {
     id: 'cert-1',
-    title: 'Python Programming Fundamentals',
-    issuer: 'Coursera',
-    date: 'June 2023',
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
-    link: 'https://www.coursera.org',
-    skills: ['Python', 'Programming', 'Problem Solving'],
-    description: 'Example certificate: Fundamentals of Python programming including data structures, algorithms, and object-oriented programming concepts.'
+    title: 'Dr\'s Medicine Prescription Prediction - 99% Accuracy',
+    issuer: 'Kaggle',
+    date: 'December 2024',
+    image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
+    link: 'https://kaggle.com/code/vanshoberoi3103/dr-s-medicine-prescription-prediction-model-99',
+    skills: ['Machine Learning', 'Python', 'Healthcare AI', 'Random Forest'],
+    description: 'Built a supervised machine learning pipeline achieving 99% accuracy in predicting medical prescriptions based on patient symptoms and demographic data using Random Forest Classifier.'
   },
   {
     id: 'cert-2',
-    title: 'Web Development with HTML/CSS',
-    issuer: 'freeCodeCamp',
-    date: 'August 2023',
-    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
-    link: 'https://www.freecodecamp.org/',
-    skills: ['HTML', 'CSS', 'Web Design'],
-    description: 'Example certificate: Responsive web design principles and implementation using HTML5 and CSS3.'
+    title: 'Jute Pest Classification - 95% Accuracy',
+    issuer: 'Kaggle',
+    date: 'November 2024',
+    image: 'https://images.unsplash.com/photo-1574263867128-a3d5c1b1deaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
+    link: 'https://www.kaggle.com/code/vanshoberoi3103/jute-pest-tf-restnet101x1-95-acc-on-1st-try',
+    skills: ['TensorFlow', 'Deep Learning', 'Computer Vision', 'AWS'],
+    description: 'Fine-tuned TensorFlow ResNet101x1 model to classify 13 jute pest types with 95% accuracy, optimized on AWS m5.large instance with advanced preprocessing techniques.'
   },
   {
     id: 'cert-3',
-    title: 'Introduction to Machine Learning',
-    issuer: 'Kaggle',
-    date: 'October 2023',
-    image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
-    link: 'https://www.kaggle.com/learn',
-    skills: ['Machine Learning', 'Python', 'Data Analysis'],
-    description: 'Example certificate: Fundamentals of machine learning algorithms and their implementation using Python libraries.'
+    title: 'AIML Development Engineer Internship',
+    issuer: 'EaseMyMed',
+    date: 'December 2024 - June 2025',
+    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
+    link: 'https://easemymed.com',
+    skills: ['Django REST', 'OpenAI', 'Gemini', 'RAG', 'AWS SageMaker'],
+    description: 'Developing RESTful APIs using Django, integrating AI technologies including OpenAI and Gemini models, implementing RAG for contextual AI interactions, and deploying on cloud platforms.'
   },
   {
     id: 'cert-4',
-    title: 'Git and GitHub Basics',
-    issuer: 'LinkedIn Learning',
-    date: 'May 2023',
-    image: 'https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
-    link: 'https://www.linkedin.com/learning',
-    skills: ['Git', 'GitHub', 'Version Control'],
-    description: 'Example certificate: Version control fundamentals using Git and collaboration through GitHub.'
+    title: 'Neo4j Graph Database Certification',
+    issuer: 'Neo4j Workshops',
+    date: '2025',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
+    link: 'https://neo4j.com/graphacademy/',
+    skills: ['GraphDB', 'Cypher', 'GraphRAG', 'Data Retrieval'],
+    description: 'Researched and learned GraphDB and GraphRAG concepts through Neo4j workshops, gained proficiency in Cypher query language and understood advantages of GraphDB for accurate data retrieval.'
   },
   {
     id: 'cert-5',
-    title: 'AWS Cloud Practitioner',
-    issuer: 'Amazon Web Services',
-    date: 'December 2023',
-    image: 'https://images.unsplash.com/photo-1605745341112-85968b19335a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
-    link: 'https://aws.amazon.com/certification/',
-    skills: ['AWS', 'Cloud Computing', 'Infrastructure'],
-    description: 'Example certificate: Cloud computing fundamentals and AWS services overview for cloud practitioners.'
+    title: 'Design Team Head Leadership',
+    issuer: 'GNDU E-Cell',
+    date: 'Spring 2022 – 2023',
+    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
+    link: 'https://gndu.ac.in/',
+    skills: ['Leadership', 'Team Management', 'Design', 'Collaboration'],
+    description: 'Led a team of 4 members in creating innovative designs for diverse projects, managed the design team and collaborated with other teams in the entrepreneurship cell.'
   },
   {
     id: 'cert-6',
-    title: 'React Development',
-    issuer: 'Meta',
-    date: 'January 2024',
-    image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
-    link: 'https://www.coursera.org/professional-certificates/meta-front-end-developer',
-    skills: ['React', 'JavaScript', 'Frontend'],
-    description: 'Example certificate: Modern React development including hooks, state management, and component architecture.'
+    title: 'Sports Person Classification - 84.31% Accuracy',
+    issuer: 'GitHub Portfolio',
+    date: 'September 2024',
+    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
+    link: 'https://github.com/Vansh462/LearningProjects/tree/main/SportsPersonClassifier',
+    skills: ['OpenCV', 'Machine Learning', 'Computer Vision', 'HaarCascades'],
+    description: 'Engineered a face-based sports person classifier using HaarCascades and wavelet transforms, achieving 84.31% accuracy with Logistic Regression after systematic hyperparameter optimization.'
   },
 ];
 

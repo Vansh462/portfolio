@@ -3,7 +3,7 @@ import { PortfolioData } from '@/types';
 const portfolioData: PortfolioData = {
   personal: {
     name: 'Vansh Oberoi',
-    title: 'AI Developer & Software Engineer',
+    title: 'AIML Development Engineer',
     summary: 'Passionate AI Developer and Software Engineer with expertise in Python, Machine Learning, Django REST APIs, and Cloud Technologies. Currently working as an AI Developer & Software Developer Intern at EaseMyMed, developing cutting-edge AI solutions, RESTful APIs, implementing RAG for contextual AI interactions, and integrating advanced AI technologies including OpenAI and Gemini models.',
     image: '/profile.webp',
     contact: {
@@ -208,10 +208,14 @@ const portfolioData: PortfolioData = {
     { name: 'Cypher' },
     { name: 'Bhashini AI' },
     { name: 'Selenium' },
+    { name: 'CI/CD' },
+    { name: 'NotebookLLM' },
+    { name: 'ChatGPT' },
+    { name: 'Claude' },
   ],
   experience: [
     {
-      title: 'AI Developer & Software Developer Intern',
+      title: 'AIML Development Engineer Intern',
       company: 'EaseMyMed',
       startDate: 'Dec 2024',
       endDate: 'June 2025',

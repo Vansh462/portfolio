@@ -78,14 +78,23 @@ export default function Hero() {
               variants={fadeIn('up', 0.2)}
               className="text-xl md:text-2xl font-medium text-dark-300/80 dark:text-light-300/80 mb-6"
             >
-              Building intelligent solutions with AI & Machine Learning
+              Building intelligent solutions with{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500 font-semibold">
+                AI & Machine Learning
+              </span>
             </motion.h2>
 
             <motion.p
               variants={fadeIn('up', 0.3)}
               className="text-lg text-dark-300/70 dark:text-light-300/70 mb-8 max-w-lg"
             >
-              {personal.summary}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500 font-medium">
+                Passionate AI Engineer
+              </span>{' '}
+              with expertise in{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary-500 to-primary-500 font-medium">
+                Python, Machine Learning, and Web Technologies
+              </span>
             </motion.p>
 
             <motion.div

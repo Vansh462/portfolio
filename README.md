@@ -1,6 +1,12 @@
 # Vansh Oberoi - AI Engineer Portfolio
 
-![Portfolio Preview](https://raw.githubusercontent.com/Vansh462/portfolio/main/public/portfolio-screenshot.png)
+## Portfolio Preview
+
+### Light Theme
+![Portfolio Light Theme](https://raw.githubusercontent.com/Vansh462/portfolio/main/public/portfolio-light.webp)
+
+### Dark Theme
+![Portfolio Dark Theme](https://raw.githubusercontent.com/Vansh462/portfolio/main/public/portfolio-dark.webp)
 
 
 This project implements a modern web application architecture with advanced features like route prefetching, intelligent resource loading, and progressive web app capabilities. It uses a component-based architecture with performance optimization at its core, including code splitting, lazy loading, and optimized asset delivery.
