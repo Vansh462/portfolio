@@ -1,20 +1,26 @@
-# Vansh Oberoi - AI Engineer Portfolio
+# 🚀 Vansh Oberoi - AI Engineer Portfolio
 
-## Portfolio Preview
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=vercel)](https://portfolio-vansh-oberois-projects.vercel.app/)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/Vansh462/portfolio)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/Vansh462)
 
-### Light Theme
-![Portfolio Light Theme](https://raw.githubusercontent.com/Vansh462/portfolio/main/public/portfolio-light.webp)
+## 📸 Portfolio Preview
 
-### Dark Theme
-![Portfolio Dark Theme](https://raw.githubusercontent.com/Vansh462/portfolio/main/public/portfolio-dark.webp)
+### 🌞 Light Theme
+![Portfolio Light Theme](https://portfolio-vansh-oberois-projects.vercel.app/portfolio-screenshot-light.webp)
+
+### 🌙 Dark Theme
+![Portfolio Dark Theme](https://portfolio-vansh-oberois-projects.vercel.app/portfolio-screenshot-dark.webp)
 
 
 This project implements a modern web application architecture with advanced features like route prefetching, intelligent resource loading, and progressive web app capabilities. It uses a component-based architecture with performance optimization at its core, including code splitting, lazy loading, and optimized asset delivery.
 
 The application includes sophisticated animations, keyboard shortcuts, global search functionality, and a comprehensive theme system. It's built with accessibility in mind and includes analytics integration, cookie consent management, and performance monitoring.
 
-## Live Demo
-[View Live Demo](https://portfolio-vansh-oberois-projects.vercel.app/) - Deployed on Vercel
+## 🌐 Live Demo
+**[🔗 View Live Portfolio](https://portfolio-vansh-oberois-projects.vercel.app/)**
+
+> Deployed on Vercel with automatic CI/CD from GitHub
 
 
 ## Repository Structure
@@ -40,11 +46,11 @@ The application includes sophisticated animations, keyboard shortcuts, global se
 - npm (v6.0.0 or higher)
 - Modern web browser with JavaScript enabled
 
-### Installation
+### 🚀 Quick Start
 ```bash
 # Clone the repository
-git clone <repository-url>
-cd <repository-name>
+git clone https://github.com/Vansh462/portfolio.git
+cd portfolio
 
 # Install dependencies
 npm install
@@ -198,11 +204,26 @@ Key component interactions:
 
 ## 📞 Contact
 
-Vansh Oberoi
-- Email: [learnsolo462@gmail.com](mailto:learnsolo462@gmail.com)
-- LinkedIn: [linkedin.com/in/Vansh462](https://www.linkedin.com/in/vansh-oberoi-62baa6178/)
-- GitHub: [github.com/Vansh462](https://github.com/Vansh462/)
-- Instagram: [@vanshoberoi3103](https://www.instagram.com/vanshoberoi3103)
+**Vansh Oberoi** - AI Engineer & ML Specialist
+
+[![Email](https://img.shields.io/badge/Email-learnsolo462@gmail.com-red?style=flat-square&logo=gmail)](mailto:learnsolo462@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Vansh462-blue?style=flat-square&logo=linkedin)](https://linkedin.com/in/Vansh462)
+[![GitHub](https://img.shields.io/badge/GitHub-Vansh462-black?style=flat-square&logo=github)](https://github.com/Vansh462)
+[![Instagram](https://img.shields.io/badge/Instagram-@vanshoberoi3103-purple?style=flat-square&logo=instagram)](https://www.instagram.com/vanshoberoi3103)
+[![Twitter](https://img.shields.io/badge/Twitter-@vansh462-blue?style=flat-square&logo=twitter)](https://twitter.com/vansh462)
+
+## 📊 Project Stats
+
+![GitHub stars](https://img.shields.io/github/stars/Vansh462/portfolio?style=social)
+![GitHub forks](https://img.shields.io/github/forks/Vansh462/portfolio?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/Vansh462/portfolio?style=social)
 
 ## 📝 License
-This project is open source and available under the MIT License. But all data is owned by Vansh Oberoi
+
+This project is open source and available under the [MIT License](LICENSE).
+
+**Portfolio Content & Data** © 2025 Vansh Oberoi. All rights reserved.
+
+---
+
+⭐ **Star this repo if you found it helpful!** ⭐

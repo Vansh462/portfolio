@@ -65,10 +65,10 @@ coverage
 .coverage
 jest_coverage
 
-# Package managers
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
+# Package managers (keep lock files for production)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
 
 # Misc
 *.tgz
@@ -76,13 +76,13 @@ pnpm-lock.yaml
 .eslintcache
 .stylelintcache
 
-# Development and testing files
-*.test.js
-*.test.ts
-*.test.tsx
-*.spec.js
-*.spec.ts
-*.spec.tsx
+# Development and testing files (keep tests)
+# *.test.js
+# *.test.ts
+# *.test.tsx
+# *.spec.js
+# *.spec.ts
+# *.spec.tsx
 
 # Backup and temporary files
 *.bak
@@ -96,12 +96,46 @@ pnpm-lock.yaml
 # Analytics and tracking
 .vercel
 .netlify
+.firebase/
+.amplify/
+.serverless/
+.terraform/
+
+# AI/ML specific
+*.pkl
+*.joblib
+*.h5
+*.pb
+models/
+checkpoints/
+__pycache__/
+*.pyc
+
+# Modern dev tools
+.turbo
+.rush
+.nx/
+.swc/
+.tsbuildinfo
+
+# IDE specific
+.fleet/
+.cursor/
+*.code-workspace
 
 # Security
-.env.example
+# .env.example (keep as template)
 *.pem
 *.key
 *.crt
+*.p12
+*.pfx
+secrets/
+auth.json
+service-account.json
+.aws/
+.gcp/
+.azure/
 
 # Performance monitoring
 .lighthouse

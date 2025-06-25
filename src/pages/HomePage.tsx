@@ -6,12 +6,12 @@ import CTASection from '@/components/home/CTASection';
 
 export default function HomePage() {
   return (
-    <div className="overflow-hidden">
+    <main className="overflow-hidden" role="main" aria-label="Vansh Oberoi Portfolio Homepage">
       <Hero />
       <SkillsSection />
       <FeaturedProjects />
       <TestimonialsSection />
       <CTASection />
-    </div>
+    </main>
   );
 }

@@ -45,7 +45,7 @@ export default function Hero() {
   const { personal } = portfolioData;
 
   return (
-    <section className="relative min-h-[90vh] flex items-center py-20 overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center py-20 overflow-hidden" aria-labelledby="hero-heading" role="banner">
       {/* Content now sits on top of global animated background */}
 
       <div className="container mx-auto px-4 z-10">
@@ -62,6 +62,7 @@ export default function Hero() {
             </motion.div>
 
             <motion.h1
+              id="hero-heading"
               variants={fadeIn('up', 0.1)}
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark-400 dark:text-light-100 mb-6"
             >
@@ -162,8 +163,12 @@ export default function Hero() {
               {/* Profile image */}
               <img
                 src={personal.image}
-                alt={`Profile photo of ${personal.name}, AI Engineer`}
+                alt={`Profile photo of ${personal.name}, AI Engineer and Machine Learning Specialist`}
                 className="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-white dark:border-dark-300 shadow-xl z-10"
+                loading="eager"
+                fetchpriority="high"
+                width="320"
+                height="320"
               />
 
               {/* Floating badges */}
