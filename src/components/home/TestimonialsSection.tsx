@@ -1,32 +1,11 @@
 import { motion } from 'framer-motion';
-import { Quote } from 'lucide-react';
+import { Quote, ExternalLink } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import { Section } from '@/components/ui/Section';
-
-
-// Real testimonials from colleagues and supervisors
-const testimonials = [
-  {
-    id: 1,
-    content: "Brilliant student who led the team perfectly and delivered the Jute Pest project with remarkable results on his first attempt. Initially, I thought the team wouldn't meet the deadline as they started late when other teams had a month to prepare, but they had only 10 days. In those final 10 days, Vansh delivered exceptional results!",
-    author: "Nikhil",
-    position: "Working Professional, LearnFlu",
-  },
-  {
-    id: 2,
-    content: "Demonstrates disciplined and time-managed work delivery with good technical skills and strong potential. Shows excellent problem-solving abilities and should continue developing a broader strategic perspective to see projects through to completion.",
-    author: "Harshraj",
-    position: "CEO, EMM",
-  },
-  {
-    id: 3,
-    content: "I appreciate your thinking approach and the mentality you bring to challenges. Your problem-solving mindset and technical perspective make you someone I would definitely like to collaborate with in future projects.",
-    author: "Tarun",
-    position: "CEO",
-  },
-];
+import portfolioData from '@/data/portfolio';
 
 export default function TestimonialsSection() {
+  const { testimonials } = portfolioData;
 
   return (
     <Section 
@@ -70,8 +49,20 @@ export default function TestimonialsSection() {
             
             {/* Author */}
             <div className="text-center">
-              <h4 className="font-semibold text-dark-400 dark:text-light-100 text-lg">
-                {testimonial.author}
+              <h4 className="font-semibold text-dark-400 dark:text-light-100 text-lg flex items-center justify-center gap-2">
+                {testimonial.linkedIn ? (
+                  <a
+                    href={testimonial.linkedIn}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-primary-500 transition-colors flex items-center gap-1"
+                  >
+                    {testimonial.author}
+                    <ExternalLink size={14} />
+                  </a>
+                ) : (
+                  testimonial.author
+                )}
               </h4>
               <p className="text-sm text-dark-300/70 dark:text-light-300/70 mt-1">
                 {testimonial.position}

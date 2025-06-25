@@ -67,7 +67,7 @@ export default function AboutPage() {
       </section>
 
       {/* Education Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <SectionHeading title="Education" />
           <div className="space-y-8">
@@ -248,7 +248,7 @@ export default function AboutPage() {
                   ⚙️ Backend & APIs
                 </h3>
                 <div className="flex flex-wrap justify-center gap-3 max-w-md mx-auto">
-                  {['Django', 'REST APIs', 'FastAPI', 'PostgreSQL', 'MongoDB', 'Redis'].map((tech, index) => (
+                  {['Django', 'REST APIs', 'FastAPI', 'PostgreSQL', 'MongoDB'].map((tech, index) => (
                     <motion.div
                       key={tech}
                       initial={{ opacity: 0, scale: 0.8 }}
@@ -356,7 +356,7 @@ export default function AboutPage() {
       </section>
 
       {/* Certifications Gallery Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <CertificationsGallery />
         </div>

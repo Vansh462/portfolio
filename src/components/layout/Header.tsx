@@ -44,18 +44,26 @@ export default function Header() {
       }`}
     >
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link
-          to="/"
-          className="group flex items-center"
-        >
-          <div className="relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-300"></div>
-            <div className="relative px-3 py-1 bg-white dark:bg-dark-300 ring-1 ring-light-500/50 dark:ring-dark-100/50 rounded-lg leading-none flex items-center">
-              <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500">V</span>
-              <span className="text-xl font-bold text-dark-400 dark:text-light-100 ml-1">Oberoi</span>
+        <div className="flex items-center">
+          <Link
+            to="/"
+            className="group flex items-center"
+          >
+            <div className="relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+              <div className="relative px-3 py-2 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-white/20 dark:border-gray-700/50 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 flex items-center">
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-center">
+                  <span className="text-lg font-bold text-white">V</span>
+                </div>
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+          <img 
+            src="/flute_lineart.png" 
+            alt="Flute decoration" 
+            className="ml-3 w-8 h-4 object-contain opacity-60"
+          />
+        </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-1">

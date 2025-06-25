@@ -27,10 +27,10 @@ export default function Footer({ onOpenShortcuts }: FooterProps) {
   return (
     <footer className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white pt-20 pb-8 relative">
       {/* Wave SVG */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none transform translate-y-[-98%] z-20">
+      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none transform translate-y-[-98%] z-10">
         <svg className="relative block w-full h-[50px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
           <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
-            className="fill-primary-500"></path>
+            className="fill-white dark:fill-gray-100"></path>
         </svg>
       </div>
 
@@ -183,11 +183,13 @@ export default function Footer({ onOpenShortcuts }: FooterProps) {
             </div>
           </div>
           <div className="flex items-center">
-            <p className="text-white/70 text-sm flex items-center">
-              Made with <span className="mx-1 text-red-500">❤</span> using
-              <span className="ml-1 text-white font-medium">React</span> &
-              <span className="ml-1 text-white font-medium">Vite</span>
-            </p>
+            <div className="flex items-center">
+              <p className="text-white/70 text-sm flex items-center">
+                Made with <span className="mx-1 text-red-500">❤</span> using
+                <span className="ml-1 text-white font-medium">React</span> &
+                <span className="ml-1 text-white font-medium">Vite</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>

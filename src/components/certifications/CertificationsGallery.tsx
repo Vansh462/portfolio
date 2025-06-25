@@ -32,7 +32,7 @@ const certifications: Certification[] = [
     title: 'Jute Pest Classification - 95% Accuracy',
     issuer: 'Kaggle',
     date: 'November 2024',
-    image: 'https://images.unsplash.com/photo-1574263867128-a3d5c1b1deaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
+    image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
     link: 'https://www.kaggle.com/code/vanshoberoi3103/jute-pest-tf-restnet101x1-95-acc-on-1st-try',
     skills: ['TensorFlow', 'Deep Learning', 'Computer Vision', 'AWS'],
     description: 'Fine-tuned TensorFlow ResNet101x1 model to classify 13 jute pest types with 95% accuracy, optimized on AWS m5.large instance with advanced preprocessing techniques.'
@@ -182,7 +182,7 @@ const CertificationsGallery = () => {
 
                 {/* Action Button */}
                 <button className="w-full py-2 px-4 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-primary-100 dark:hover:bg-primary-900/30 hover:text-primary-700 dark:hover:text-primary-300 transition-colors text-sm font-medium">
-                  View Certificate
+                  View Achievement
                 </button>
               </div>
             </motion.div>
@@ -282,7 +282,7 @@ const CertificationsGallery = () => {
                   rel="noopener noreferrer"
                 >
                   <ExternalLink className="w-5 h-5 mr-2" />
-                  View Certificate
+                  View Achievement
                 </a>
                 <button
                   onClick={() => setSelectedCert(null)}

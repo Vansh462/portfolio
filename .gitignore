@@ -75,3 +75,38 @@ pnpm-lock.yaml
 *.tar.gz
 .eslintcache
 .stylelintcache
+
+# Development and testing files
+*.test.js
+*.test.ts
+*.test.tsx
+*.spec.js
+*.spec.ts
+*.spec.tsx
+
+# Backup and temporary files
+*.bak
+*.backup
+*.old
+*.orig
+
+# Image optimization cache
+.image-cache
+
+# Analytics and tracking
+.vercel
+.netlify
+
+# Security
+.env.example
+*.pem
+*.key
+*.crt
+
+# Performance monitoring
+.lighthouse
+bundle-analyzer-report.html
+
+# Documentation
+/docs/build
+/storybook-static

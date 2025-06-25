@@ -217,9 +217,12 @@ export default function ContactPage() {
                 {/* Magic Card with Glassmorphism */}
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-600 via-secondary-600 to-primary-600 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
                 <div className="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/50 rounded-2xl p-8 shadow-2xl">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                     Send Me a Message
                   </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-6 italic">
+                    it does reach me :)
+                  </p>
 
                 {submitSuccess ? (
                   <div className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 p-4 rounded-md mb-6">

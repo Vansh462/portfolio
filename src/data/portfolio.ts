@@ -425,6 +425,28 @@ const portfolioData: PortfolioData = {
       description: 'Led a team of 4 members in creating innovative designs for diverse projects. Managed the design team and collaborated with other teams.',
     },
   ],
+  testimonials: [
+    {
+      id: 1,
+      content: "Good Work on Jute Pest project.",
+      author: "Nikhil",
+      position: "Working Professional, LearnFlu",
+      linkedIn: "https://www.linkedin.com/in/nikhil-maurya-588945170/?originalSubdomain=in"
+    },
+    {
+      id: 2,
+      content: "Demonstrates disciplined and time-managed work delivery with good technical skills and strong potential. Shows excellent problem-solving abilities and should continue developing a broader strategic perspective to see projects through to completion.",
+      author: "Harshraj",
+      position: "CEO, Embea"
+    },
+    {
+      id: 3,
+      content: "I appreciate your thinking approach and the mentality you bring to challenges. Your problem-solving mindset and technical perspective make you someone I would definitely like to collaborate with in future ventures.",
+      author: "Tarun",
+      position: "CEO, Tekno Solve",
+      linkedIn: "https://www.linkedin.com/in/tarun-singh666/"
+    }
+  ]
 };
 
 export default portfolioData;
