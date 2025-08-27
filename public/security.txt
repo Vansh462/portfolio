@@ -1,5 +1,5 @@
 Contact: mailto:learnsolo462@gmail.com
 Expires: 2025-12-31T23:59:59.000Z
 Preferred-Languages: en
-Canonical: https://portfolio-vansh-oberois-projects.vercel.app/security.txt
-Hiring: https://portfolio-vansh-oberois-projects.vercel.app/contact
+Canonical: https://portfolio-vob.vercel.app/security.txt
+Hiring: https://portfolio-vob.vercel.app/contact

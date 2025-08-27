@@ -83,6 +83,7 @@ jest_coverage
 # *.spec.js
 # *.spec.ts
 # *.spec.tsx
+Makefile
 
 # Backup and temporary files
 *.bak

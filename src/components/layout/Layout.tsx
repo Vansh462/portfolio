@@ -11,7 +11,7 @@ import KeyboardShortcutsDialog from '@/components/ui/KeyboardShortcutsDialog';
 export default function Layout() {
   const location = useLocation();
   const [isShortcutsOpen, setIsShortcutsOpen] = useState(false);
-  
+
   // Handle route changes
   useEffect(() => {
     // Scroll to top on route change
