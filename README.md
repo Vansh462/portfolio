@@ -1,16 +1,16 @@
 # 🚀 Vansh Oberoi - AI Engineer Portfolio
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=vercel)](https://portfolio-vansh-oberois-projects.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=vercel)](https://portfolio-vob.vercel.app/)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/Vansh462/portfolio)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/Vansh462)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/vansh-o/)
 
 ## 📸 Portfolio Preview
 
 ### 🌞 Light Theme
-![Portfolio Light Theme](https://portfolio-vansh-oberois-projects.vercel.app/portfolio-screenshot-light.webp)
+![Portfolio Light Theme](https://portfolio-vob.vercel.app/portfolio-screenshot-light.webp)
 
 ### 🌙 Dark Theme
-![Portfolio Dark Theme](https://portfolio-vansh-oberois-projects.vercel.app/portfolio-screenshot-dark.webp)
+![Portfolio Dark Theme](https://portfolio-vob.vercel.app/portfolio-screenshot-dark.webp)
 
 
 This project implements a modern web application architecture with advanced features like route prefetching, intelligent resource loading, and progressive web app capabilities. It uses a component-based architecture with performance optimization at its core, including code splitting, lazy loading, and optimized asset delivery.
@@ -207,7 +207,7 @@ Key component interactions:
 **Vansh Oberoi** - AI Engineer & ML Specialist
 
 [![Email](https://img.shields.io/badge/Email-learnsolo462@gmail.com-red?style=flat-square&logo=gmail)](mailto:learnsolo462@gmail.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Vansh462-blue?style=flat-square&logo=linkedin)](https://linkedin.com/in/Vansh462)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Vansh462-blue?style=flat-square&logo=linkedin)](https://linkedin.com/in/vansh-o/)
 [![GitHub](https://img.shields.io/badge/GitHub-Vansh462-black?style=flat-square&logo=github)](https://github.com/Vansh462)
 [![Instagram](https://img.shields.io/badge/Instagram-@vanshoberoi3103-purple?style=flat-square&logo=instagram)](https://www.instagram.com/vanshoberoi3103)
 [![Twitter](https://img.shields.io/badge/Twitter-@vansh462-blue?style=flat-square&logo=twitter)](https://twitter.com/vansh462)

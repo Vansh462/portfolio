@@ -13,7 +13,7 @@ const portfolioData: PortfolioData = {
       socials: [
         {
           platform: 'LinkedIn',
-          url: 'https://linkedin.com/in/Vansh462',
+          url: 'https://linkedin.com/in/vansh-o/',
           icon: 'linkedin',
         },
         {
